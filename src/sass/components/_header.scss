@@ -1,0 +1,361 @@
+/* ==========================================================================
+                HEADER STYLES
+   ========================================================================== */
+
+html {
+    height: auto;
+    min-height: 100vh;
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+
+body {
+    min-height: 100vh;
+}
+
+.wrapper{
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+::selection {
+    //background: $cBrown;
+    //color: $cWhite;
+    transition: background .2s 0s, color .2s 0s;
+}
+
+.block-clear{
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+.vertical-center{
+    &:before{
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        margin: 0;
+        vertical-align: middle;
+    }
+}
+
+.center{
+    text-align: center;
+}
+
+.site-body {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.wrapper-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    z-index: 100;
+    border-bottom: 1px solid #f1f1f1;
+    box-sizing: border-box;
+    transition: background .3s 0s;
+
+    .header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sign-up{
+      border-radius: 5px;
+      background-color: #9ec44d;
+      color: #ffffff;
+      @include GothamPro-reg;
+      font-size: 18px;
+      font-weight: 400;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 10px 29px;
+
+        .icon-button{
+            display: none;
+        }
+    }
+
+    .logo{
+      padding: 15px 0;
+    }
+
+    .address{
+      opacity: 0.8;
+      color: #353535;
+      @include GothamPro-Medium;
+      font-size: 16px;
+      font-weight: 500;
+
+      a{
+          color: #353535;
+          text-decoration: none;
+      }
+    }
+
+    .address, .logo, .sign-up{
+        transition: all .3s 0s;
+    }
+
+    .openMenu &{
+        background: rgba(255, 255, 255, 0);
+        border-bottom: 1px solid rgba(241, 241, 241, 0);
+
+        .address, .logo, .sign-up{
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}
+
+.header-left-container{
+    display: flex;
+    align-items: center;
+}
+
+.mobile-btn-menu {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 16px;
+    font-size: 0;
+    text-indent: -9999px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: 0;
+    cursor: pointer;
+    z-index: 20;
+    margin-right: 1rem;
+    margin-left: -20px;
+    border: 20px solid rgba(255, 255, 255, 0);
+
+    &:focus {
+        outline: none;
+    }
+
+    span {
+        display: block;
+        position: absolute;
+        top: 7px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: #454545;
+
+        &:before,&:after {
+            content: "";
+            position: absolute;
+            display: block;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #454545;
+        }
+
+        &:before {
+            top: -7px;
+        }
+
+        &:after {
+            bottom: -7px;
+        }
+    }
+}
+
+/**
+ * Стиль 2
+ *
+ * «Гамбургер» превращается в «x» (класс active).
+ * Берется исходное состояние, затем полоски плавно перемещаются в центр
+ * и трансформируются в «x».
+*/
+.mobile-btn-menu {
+
+    span{
+        transition: background 0.2s 0.1s;
+
+        &:before{
+            transition: top .3s .3s, transform .3s 0s, background .2s 0s;
+        }
+        &:after{
+            transition: bottom .3s .3s, transform .3s 0s, background .2s 0s;
+        }
+    }
+
+    &.active{
+        span {
+            background: none;
+            &:before {
+                background: #fff;
+                top: 0;
+                transform: rotate(45deg);
+                transition: top .3s 0s, transform .3s .3s;
+            }
+            &:after {
+                background: #fff;
+                bottom: 0;
+                transform: rotate(-45deg);
+                transition: bottom .3s 0s, transform .3s .3s;
+            }
+        }
+    }
+}
+
+.container-menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #cccccc;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s 0s, visibility .3s 0s;
+
+    .openMenu & {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+.window-menu__right{
+    background-color: #ffffff;
+}
+
+.window-menu__left{
+    background-color: #325c95;
+}
+
+.menu-item{
+    & + .menu-item{
+        margin-top: 5rem;
+    }
+
+}
+
+.menu-link{
+    color: #ffffff;
+    @include GothamPro-Medium;
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 2.8rem;
+    text-decoration: none;
+    transition: color .3s 0s;
+
+    &:hover{
+        color: #9ec44d;
+    }
+
+    .active &{
+        color: #9ec44d;
+    }
+}
+
+.social-list{
+    font-size: 0;
+}
+
+.social-item{
+    display: inline-block;
+
+    & + .social-item{
+        margin-left: 40px;
+    }
+}
+
+.window-menu__content{
+    padding-top: 94px;
+    box-sizing: border-box;
+    height: 100%;
+
+    .container__left, .container__right{
+        padding-top: 12rem;
+    }
+
+    .container__right{
+        max-height: 680px;
+        padding-bottom: 1rem;
+    }
+
+}
+
+.window-menu__content-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .title{
+        color: #353535;
+        @include GothamPro-Light;
+        font-size: 1.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        margin-bottom: 4.5rem;
+    }
+
+    h2{
+        color: #454545;
+        @include GothamPro-Medium;
+        font-size: 5rem;
+        font-weight: 500;
+        line-height: 6.5rem;
+        margin-bottom: 7.4rem;
+    }
+
+    .city{
+        color: #353535;
+        @include GothamPro-Medium;
+        font-size: 2.8rem;
+        font-weight: 500;
+        margin-bottom: 2.4rem;
+    }
+
+    .address{
+        color: #353535;
+        @include GothamPro-Light;
+        font-size: 2rem;
+        font-weight: 300;
+        margin-bottom: 1.4rem;
+    }
+
+    .phone{
+        display: inline-block;
+        color: #353535;
+        @include GothamPro-Light;
+        font-size: 2rem;
+        font-weight: 300;
+        text-decoration: none;
+        margin-bottom: 4rem;
+    }
+}
+
+.logo-menu{
+    position: absolute;
+    top: 17px;
+    right: 0;
+}
+
+
+
+
