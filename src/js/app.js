@@ -139,6 +139,7 @@ let moduleApp = {
         this.startupMessage();
         this.initSlider();
         this.pagePilingInit();
+
     },
     'executeModules':function(){
         $('[data-is]').each(function(i,thisModule){
@@ -211,6 +212,7 @@ let moduleApp = {
 
         });
 
+
         //button menu
         $('.js-m-btn-menu').on('click', function(e){
            e.preventDefault();
@@ -281,9 +283,9 @@ let moduleApp = {
             });
         });
 
+
         //hover element price
         $('.js-item-element').hover(function () {
-            console.log($(this));
             let $this = $(this),
                 $parent = $this.parents('.price-list'),
                 $allElements = $parent.find('.js-item-element');
@@ -293,6 +295,18 @@ let moduleApp = {
 
         });
 
+
+        $('.js-certificates').on('click', function(){
+            let updateSize = true;
+            let $this = $(this),
+               thisSertificat = $this.parent('div').find('.certificat-list').slideToggle(300);
+
+            $this.toggleClass('active');
+
+            setTimeout(function(){
+                moduleApp.initSlider(updateSize);
+            }, 400);
+        });
     },
     'resizeGlobal': function(){
         window.addEventListener('resize', resizeInitFunction);
@@ -313,16 +327,24 @@ let moduleApp = {
     },
     'pagePilingInit': function(){
 
-        if($(document).width() > 900){
-            $('#pagepiling').pagepiling({
-                anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'seventhPage'],
-                menu: '#myMenu',
-                sectionSelector: '.section'
-            });
-        }
+        $(".main").onepage_scroll({
+            sectionContainer: "section",
+            responsiveFallback: 600,
+            loop: false,
+            animationTime:500,
+            updateURL: true
+        });
+
+        // if($(document).width() > 900){
+            // $('#pagepiling').pagepiling({
+            //     anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'seventhPage'],
+            //     menu: '#myMenu',
+            //     sectionSelector: '.section'
+            // });
+        // }
 
     },
-    'initSlider': function(){
+    'initSlider': function(update){
         let configSlideChoice = {
             slidesPerView: 1,
             spaceBetween: 0,
@@ -381,7 +403,9 @@ let moduleApp = {
             slidesPerView: 1,
             spaceBetween: 0,
             centeredSlides: true,
+            simulateTouch: false,
             autoHeight: true,
+            observer: true,
             navigation: {
                 nextEl: '.js-next-experts',
                 prevEl: '.js-prev-experts',
@@ -391,6 +415,10 @@ let moduleApp = {
 
         let expertsSwiper = new Swiper('.js-slider-experts', configSliderExperts);
         let expertsContentSwiper = new Swiper('.js-slider-experts-content', configSliderExpertsContent);
+
+        if(update){
+            expertsContentSwiper.updateSize();
+        }
 
 
         let configSliderReviews = {

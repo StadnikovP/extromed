@@ -56,6 +56,8 @@
 
             window.addEventListener('resize', rootRemEngine);
         </script>
+
+
         <link rel="stylesheet" href="/dist/main.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -108,13 +110,13 @@
                         <div class="full-screen__content container container_main window-menu__content">
                             <div class="container__left">
                                 <div class="menu-list" id="myMenu">
-                                    <div data-menuanchor="firstPage" class="menu-item active"><a href="#firstPage" class="menu-link">Главная</a></div>
-                                    <div data-menuanchor="secondPage" class="menu-item"><a href="#secondPage" class="menu-link">Почему выбирают нас</a></div>
-                                    <div data-menuanchor="thirdPage" class="menu-item"><a href="#thirdPage" class="menu-link">Наши напраравления</a></div>
-                                    <div data-menuanchor="fourthPage" class="menu-item"><a href="#fourthPage" class="menu-link">Наши специалисты</a></div>
-                                    <div data-menuanchor="fifthePage" class="menu-item"><a href="#fifthPage" class="menu-link">Отзывы</a></div>
-                                    <div data-menuanchor="sixthPage" class="menu-item"><a href="#sixthPage" class="menu-link">Спецпредложения</a></div>
-                                    <div data-menuanchor="seventhPage" class="menu-item"><a href="#seventhPage" class="menu-link">Как нас найти</a></div>
+                                    <div data-index="firstPage" class="menu-item active"><a data-index="1" href="#firstPage" class="menu-link">Главная</a></div>
+                                    <div data-index="choicePage" class="menu-item"><a data-index="2" href="#choicePage" class="menu-link">Почему выбирают нас</a></div>
+                                    <div data-index="directionPage" class="menu-item"><a data-index="3" href="#directionPage" class="menu-link">Наши напраравления</a></div>
+                                    <div data-index="expertsPage" class="menu-item"><a data-index="8" href="#expertsPage" class="menu-link">Наши специалисты</a></div>
+                                    <div data-index="reviewsPage" class="menu-item"><a data-index="9" href="#reviewsPage" class="menu-link">Отзывы</a></div>
+                                    <div data-index="stockPage" class="menu-item"><a data-index="10" href="#stockPage" class="menu-link">Спецпредложения</a></div>
+                                    <div data-index="contactsPage" class="menu-item"><a data-index="11" href="#contactsPage" class="menu-link">Как нас найти</a></div>
                                 </div>
                             </div>
 

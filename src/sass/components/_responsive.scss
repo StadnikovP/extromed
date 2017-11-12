@@ -279,12 +279,14 @@
     margin-top: 0;
     width: 100%;
     border-width: 2px;
+    z-index: 9;
 
     .prev-experts{
       span{
         left: 15px;
       }
     }
+
     .next-experts{
       span{
         right: 15px;
