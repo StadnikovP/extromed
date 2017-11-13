@@ -3655,7 +3655,8 @@ body {
       align-items: flex-start; }
 
 .window-direction .container__left {
-  max-width: 40rem; }
+  max-width: 40rem;
+  padding: 0; }
 
 .window-direction__image {
   position: relative; }
