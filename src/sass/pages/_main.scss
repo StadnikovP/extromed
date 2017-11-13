@@ -79,6 +79,8 @@
   padding: 4rem 3rem 3rem 3rem;
   box-sizing: border-box;
   z-index: 5;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .blue-block__title{
@@ -545,8 +547,8 @@
   }
 
   .container__left {
-    max-width: 40rem;
-    padding: 0;
+    //max-width: 40rem;
+    //padding: 0;
   }
 }
 

@@ -3280,7 +3280,9 @@ body {
   width: 37rem;
   padding: 4rem 3rem 3rem 3rem;
   box-sizing: border-box;
-  z-index: 5; }
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden; }
 
 .blue-block__title {
   color: #ffffff;
@@ -3653,10 +3655,6 @@ body {
 .window-direction .full-screen__wrapper {
   -ms-flex-align: start;
       align-items: flex-start; }
-
-.window-direction .container__left {
-  max-width: 40rem;
-  padding: 0; }
 
 .window-direction__image {
   position: relative; }
