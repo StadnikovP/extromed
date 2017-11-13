@@ -88,6 +88,12 @@ include('./components/header.php');
             <div class="full-screen__right window-direction__image">
                 <div class="window-direction__image-1" style="background-image: url('/dist/img/lor.jpg');"></div>
             </div>
+            <div class="blue-block blue-block__wrapper">
+                <div class="blue-block__content">
+                    <div class="blue-block__title">Отоларинголог</div>
+                    <div class="blue-block__text">В нашей клинике установлен лор комбайн - оборудование немецкой фирмы Otopront, это позволяет оказывать услуги по диагностике и лечению лор органов   по самым высоким мировым стандартам.</div>
+                </div>
+            </div>
             <div class="full-screen__wrapper">
                 <div class="full-screen__content full-screen__content-left container container_main window-direction__content">
                     <div class="container__left">
@@ -247,6 +253,12 @@ include('./components/header.php');
             <div class="full-screen__right window-direction__image">
                 <div class="window-direction__image-1" style="background-image: url('/dist/img/image-1.jpg');"></div>
             </div>
+            <div class="blue-block blue-block__wrapper">
+                <div class="blue-block__content">
+                    <div class="blue-block__title">Лечение зубов под седацией </div>
+                    <div class="blue-block__text">В нашей клинике установлен аппарат новейшего поколения американской фирмы  Matrix, он  предназначен для ингаляционной седации с использованием закиси азота («веселящего гза»).</div>
+                </div>
+            </div>
             <div class="full-screen__wrapper">
                 <div class="full-screen__content full-screen__content-left container container_main window-direction__content">
                     <div class="container__left">
@@ -338,6 +350,12 @@ include('./components/header.php');
             <div class="full-screen__left window-direction__left"></div>
             <div class="full-screen__right window-direction__image">
                 <div class="window-direction__image-1" style="background-image: url('/dist/img/sleep-vis.jpg');"></div>
+            </div>
+            <div class="blue-block blue-block__wrapper">
+                <div class="blue-block__content">
+                    <div class="blue-block__title">Лечение под наркозом</div>
+                    <div class="blue-block__text">Лечение зубов под наркозом (в состоянии искусственного сна) – норма для современной стоматологии. Опыт наших врачей, современное оборудование (какое?) и безопасный препарат «Севоран» - позволяет провести качественное, комфортное и безопасное лечение зубов у детей и взрослых.</div>
+                </div>
             </div>
             <div class="full-screen__wrapper">
                 <div class="full-screen__content full-screen__content-left container container_main window-direction__content">
@@ -445,6 +463,12 @@ include('./components/header.php');
             <div class="full-screen__right window-direction__image">
                 <div class="window-direction__image-1" style="background-image: url('/dist/img/pediator.jpg');"></div>
             </div>
+            <div class="blue-block blue-block__wrapper">
+                <div class="blue-block__content">
+                    <div class="blue-block__title">Педиатрия</div>
+                    <div class="blue-block__text">Педиатрия - это наука о болезнях детского организма, их лечении и профилактике.</div>
+                </div>
+            </div>
             <div class="full-screen__wrapper">
                 <div class="full-screen__content full-screen__content-left container container_main window-direction__content">
                     <div class="container__left">
@@ -521,6 +545,12 @@ include('./components/header.php');
             <div class="full-screen__left window-direction__left"></div>
             <div class="full-screen__right window-direction__image">
                 <div class="window-direction__image-1" style="background-image: url('/dist/img/analiz.jpg');"></div>
+            </div>
+            <div class="blue-block blue-block__wrapper">
+                <div class="blue-block__content">
+                    <div class="blue-block__title">Анализы</div>
+                    <div class="blue-block__text">Взаимодействие с одной из передовых лабораторий позволяет нам выполнять полный спектр анализов для детей и взрослых и получать точные результаты исследований.</div>
+                </div>
             </div>
             <div class="full-screen__wrapper">
                 <div class="full-screen__content full-screen__content-left container container_main window-direction__content">
