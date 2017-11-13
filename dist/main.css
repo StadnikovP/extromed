@@ -3316,7 +3316,7 @@ body {
   position: relative;
   box-sizing: border-box;
   width: 50%;
-  max-width: 40rem; }
+  padding-right: 7em; }
 
 .max-screen__wrapper {
   width: 100%;
@@ -3653,6 +3653,9 @@ body {
 .window-direction .full-screen__wrapper {
   -ms-flex-align: start;
       align-items: flex-start; }
+
+.window-direction .container__left {
+  max-width: 40rem; }
 
 .window-direction__image {
   position: relative; }

@@ -116,9 +116,7 @@
   position: relative;
   box-sizing: border-box;
   width: 50%;
-  //float: left;
-  max-width: 40rem;
-  //padding-right: 7em;
+  padding-right: 7em;
 }
 
 .max-screen__wrapper{
@@ -544,6 +542,10 @@
 .window-direction{
   .full-screen__wrapper{
     align-items: flex-start;
+  }
+
+  .container__left {
+    max-width: 40rem;
   }
 }
 
