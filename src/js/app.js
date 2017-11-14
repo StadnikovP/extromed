@@ -332,7 +332,8 @@ let moduleApp = {
             responsiveFallback: 600,
             loop: false,
             animationTime:500,
-            updateURL: true
+            updateURL: true,
+            // direction: 'horizontal'
         });
 
         // if($(document).width() > 900){
