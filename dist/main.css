@@ -3223,10 +3223,28 @@ body {
   display: none; }
 
 .section {
+  position: absolute;
+  left: 0;
+  top: 0;
   background: #fff;
   padding-top: 84px;
   box-sizing: border-box;
-  height: 100vh; }
+  height: 100vh;
+  transition: opacity .3s 1s, visibility .3s 1s; }
+  .section.disabled {
+    opacity: 0;
+    visibility: hidden; }
+  .section.active {
+    opacity: 1;
+    visibility: visible; }
+  .section.disabled-animate {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s 0s, visibility .3s 0s; }
+  .section.active-animate {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .3s .7s, visibility .3s .7s; }
 
 .window {
   width: 100%;

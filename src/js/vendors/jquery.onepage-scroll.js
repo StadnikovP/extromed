@@ -20,11 +20,13 @@
     sectionContainer: "section",
     easing: "ease",
     animationTime: 1000,
+    delay: 500,
     pagination: true,
     updateURL: false,
     keyboard: true,
     beforeMove: null,
     afterMove: null,
+    customMove: null,
     loop: true,
     responsiveFallback: false,
     direction : 'vertical'
@@ -95,7 +97,7 @@
 
 
     $.fn.transformPage = function(settings, pos, index) {
-      if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
+      // if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
 
       // Just a simple edit that makes use of modernizr to detect an IE8 browser and changes the transform method into
       // an top animate so IE8 users can also use this script.
@@ -108,7 +110,6 @@
           $(this).animate({top: toppos+'px'},settings.animationTime);
         }
       } else{
-        console.log($(this));
         $(this).css({
           "-webkit-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
          "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
@@ -117,10 +118,12 @@
          "-ms-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
          "-ms-transition": "all " + settings.animationTime + "ms " + settings.easing,
          "transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-         "transition": "all " + settings.animationTime + "ms " + settings.easing
+         "transition": "all " + settings.animationTime + "ms " + settings.easing + " " + settings.delay + "ms"
         });
       }
-      $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+
+      //webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd
+      $(this).one('transitionend', function(e) {
         if (typeof settings.afterMove == 'function') settings.afterMove(index);
       });
     }
@@ -141,7 +144,7 @@
       }else {
         pos = (index * 100) * -1;
       }
-      if (typeof settings.beforeMove == 'function') settings.beforeMove( next.data("index"));
+      if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
       current.removeClass("active")
       next.addClass("active");
       if(settings.pagination == true) {
@@ -177,7 +180,7 @@
       }else {
         pos = ((next.data("index") - 1) * 100) * -1;
       }
-      if (typeof settings.beforeMove == 'function') settings.beforeMove(next.data("index"));
+      if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
       current.removeClass("active");
       next.addClass("active");
       if(settings.pagination == true) {
@@ -199,7 +202,7 @@
       current = $(settings.sectionContainer + ".active")
       next = $(settings.sectionContainer + "[data-index='" + (page_index) + "']");
       if(next.length > 0) {
-        if (typeof settings.beforeMove == 'function') settings.beforeMove(next.data("index"));
+        if (typeof settings.customMove == 'function') settings.customMove(next.data("index"));
         current.removeClass("active");
         next.addClass("active");
         $(".onepage-pagination li a" + ".active").removeClass("active");
@@ -329,7 +332,7 @@
       $(this).css({
         position: "absolute",
         top: topPos + "%"
-      }).addClass("section").attr("data-index", i+1);
+      }).addClass("section disabled").attr("data-index", i+1);
 
 
       $(this).css({

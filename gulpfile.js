@@ -17,7 +17,7 @@ var jslibs = [
   sourcesPath + '/js/vendors/jquery.fancybox.js',
   // sourcesPath + '/js/vendors/swiper3.min.js',
   sourcesPath + '/js/vendors/swiper3.js',
-  sourcesPath + '/js/vendors/jquery.onepage-scroll.js',
+  // sourcesPath + '/js/vendors/jquery.onepage-scroll.js',
   // sourcesPath + '/js/vendors/inview.min.js',
   // sourcesPath + '/js/vendors/sticky-kit.js',
   // sourcesPath + '/js/vendors/jquery.maskedinput.min.js',

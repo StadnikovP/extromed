@@ -333,6 +333,21 @@ let moduleApp = {
             loop: false,
             animationTime:500,
             updateURL: true,
+            beforeMove: function(index){
+                console.log('before ' + index);
+                $('.main section').eq(index-1).removeClass('active-animate')
+                $('.main section').eq(index-1).addClass('disabled-animate');
+            },
+            afterMove: function(index){
+                console.log('after ' + index);
+                $('.main section').eq(index-1).removeClass('disabled-animate')
+                $('.main section').eq(index-1).addClass('active-animate');
+            },
+            customMove: function(index){
+                console.log('custom');
+            }
+
+
             // direction: 'horizontal'
         });
 
