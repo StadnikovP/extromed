@@ -326,38 +326,40 @@ let moduleApp = {
         }
     },
     'pagePilingInit': function(){
+        let $listSection = $('.main section');
+        let configTime = {
+                delay: 1550,
+                animationTime: 500,
+                delayNextPage: 1550
+            };
 
         $(".main").onepage_scroll({
             sectionContainer: "section",
-            responsiveFallback: 600,
+            responsiveFallback: 1000,
             loop: false,
-            animationTime:500,
+            animationTime: configTime.animationTime,
+            delay: configTime.time,
             updateURL: true,
             beforeMove: function(index){
                 console.log('before ' + index);
-                $('.main section').eq(index-1).removeClass('active-animate')
-                $('.main section').eq(index-1).addClass('disabled-animate');
+                $listSection.eq(index-1).removeClass('active-animate')
+                $listSection.eq(index-1).addClass('disabled-animate');
+
+                startAnimation(index);
             },
             afterMove: function(index){
                 console.log('after ' + index);
-                $('.main section').eq(index-1).removeClass('disabled-animate')
-                $('.main section').eq(index-1).addClass('active-animate');
+                $listSection.eq(index-1).removeClass('disabled-animate')
+                $listSection.eq(index-1).addClass('active-animate');
             },
             customMove: function(index){
-                console.log('custom');
+                console.log('custom ' + index);
             }
-
-
-            // direction: 'horizontal'
         });
 
-        // if($(document).width() > 900){
-            // $('#pagepiling').pagepiling({
-            //     anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'seventhPage'],
-            //     menu: '#myMenu',
-            //     sectionSelector: '.section'
-            // });
-        // }
+        function startAnimation(index){};
+        function showPage(index){};
+        function hidePage(index){};
 
     },
     'initSlider': function(update){
