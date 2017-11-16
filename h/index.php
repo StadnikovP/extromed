@@ -6,6 +6,8 @@ include('./components/header.php');
 <div id="pagepiling" class="main">
     
     <section class="section page1">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-main">
             <div class="full-screen__left window-main__left"></div>
             <div class="full-screen__right window-main__image">
@@ -43,6 +45,8 @@ include('./components/header.php');
     </section>
 
     <section class="section page2">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-choice">
             <div class="full-screen__left window-choice__slider ">
                 <div class="swiper-container js-slider-choice">
@@ -84,6 +88,8 @@ include('./components/header.php');
     </section>
 
     <section class="section page3">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-direction">
             <div class="full-screen__left window-direction__left"></div>
             <div class="full-screen__right window-direction__image">
@@ -249,6 +255,8 @@ include('./components/header.php');
     </section>
 
     <section class="section page3">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-direction">
             <div class="full-screen__left window-direction__left"></div>
             <div class="full-screen__right window-direction__image">
@@ -347,6 +355,8 @@ include('./components/header.php');
     </section>
 
     <section class="section page3">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-direction">
             <div class="full-screen__left window-direction__left"></div>
             <div class="full-screen__right window-direction__image">
@@ -459,6 +469,8 @@ include('./components/header.php');
     </section>
 
     <section class="section page3">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-direction">
             <div class="full-screen__left window-direction__left"></div>
             <div class="full-screen__right window-direction__image">
@@ -542,6 +554,8 @@ include('./components/header.php');
     </section>
 
     <section class="section page3">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-direction">
             <div class="full-screen__left window-direction__left"></div>
             <div class="full-screen__right window-direction__image">
@@ -576,6 +590,8 @@ include('./components/header.php');
     </section>
 
     <section class="section page4">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-experts">
             <div class="full-screen__left window-experts__slider">
                 <div class="swiper-container js-slider-experts">
@@ -675,6 +691,8 @@ include('./components/header.php');
     </section>
 
     <section class="section page5">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-reviews">
             <div class="full-screen__left window-reviews__slider"></div>
             <div class="full-screen__right window-reviews__right">
@@ -729,6 +747,8 @@ include('./components/header.php');
     </section>
 
     <section class="section page6">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-stock">
             <div class="full-screen__left window-stock__left"></div>
             <div class="full-screen__right window-stock__image"></div>
@@ -792,6 +812,8 @@ include('./components/header.php');
     </section>
 
     <section class="section page7">
+        <div class="white-list opacity js-white-list"></div>
+        <div class="white-list js-white-list2"></div>
         <div class="window window-contacts">
             <div class="full-screen__left window-contacts__left"></div>
             <div class="full-screen__right window-contacts__map">

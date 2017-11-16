@@ -12495,31 +12495,371 @@ let moduleApp = {
                 delayNextPage: 1550
             };
 
+
+        startAnimation(1);
+
         $(".main").onepage_scroll({
             sectionContainer: "section",
             responsiveFallback: 1000,
             loop: false,
             animationTime: configTime.animationTime,
-            delay: configTime.time,
+            delay: configTime.delay,
             updateURL: true,
             beforeMove: function(index){
                 console.log('before ' + index);
-                $listSection.eq(index-1).removeClass('active-animate')
-                $listSection.eq(index-1).addClass('disabled-animate');
+                // $listSection.eq(index-1).removeClass('active-animate')
+                // $listSection.eq(index-1).addClass('disabled-animate');
 
-                startAnimation(index);
+                // startAnimation(index);
+
             },
             afterMove: function(index){
-                console.log('after ' + index);
-                $listSection.eq(index-1).removeClass('disabled-animate')
-                $listSection.eq(index-1).addClass('active-animate');
+                // console.log('after ' + index);
+                // $listSection.eq(index-1).removeClass('disabled-animate')
+                // $listSection.eq(index-1).addClass('active-animate');
             },
             customMove: function(index){
-                console.log('custom ' + index);
+                // console.log('custom ' + index);
+            },
+            moveUp: function(index, next){
+                // animation(index, next);
+                animationRouterUp(index, next);
+            },
+            moveDown: function(index, next){
+                // animation(index, next);
+                animationRouterDown(index, next);
             }
         });
 
-        function startAnimation(index){};
+        function startAnimation(index){
+            $listSection.eq(index-1).addClass('active-page');
+            let $list1 = $listSection.eq(index-1).find('.js-white-list');
+            let $list2 = $listSection.eq(index-1).find('.js-white-list2');
+            let sequenceTimeline = new TimelineLite();
+
+            // console.log($listSection.eq(index-1));
+            sequenceTimeline
+                .to($list2, 1, {x:"100%"})
+                .to($list1, 1, {x:"100%"}, "-=.5")
+        }
+
+        let directionCountIndex = 0;
+        let directionCountNext = 0;
+
+        function animationRouterDown(index, next){
+
+            let tl = new TimelineLite();
+            // console.log($listSection.eq(index-1));
+            //.add(TweenLite.set($listSection.eq(index-1), {'z-index':0}))
+            //.add(TweenLite.set($listSection.eq(index-1), {'z-index':0}))
+
+            switch(next) {
+                case 1:
+                    tl.add(hideChoicePage).add(showMainPage);
+                    break;
+                case 2:
+                    tl.add(hideMainPage).add(showChoicePage);
+                    break;
+                case 3:
+                    directionCountNext = next;
+                    tl.add(hideChoicePage).add(showDirectionPage);
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    directionCountIndex = index;
+                    directionCountNext = next;
+                    tl.add(hideDirectionPage).add(showDirectionPage);
+                    break;
+                case 8:
+                    directionCountIndex = index;
+                    tl.add(hideDirectionPage).add(showExpertsPage);
+                    break;
+                case 9:
+                    tl.add(hideExpertsPage).add(showReviewsPage);
+                    break;
+                case 10:
+                    tl.add(hideReviewsPage).add(showStockPage);
+                    break;
+                case 11:
+                    tl.add(hideStockPage).add(showContactsPage);
+                    break;
+                case 'menu':
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function animationRouterUp(index, next){
+
+            let tl = new TimelineLite();
+            // console.log($listSection.eq(index-1));
+            //.add(TweenLite.set($listSection.eq(index-1), {'z-index':0}))
+            //.add(TweenLite.set($listSection.eq(index-1), {'z-index':0}))
+            console.log(next);
+            switch(next) {
+                case 1:
+                    tl.add(hideChoicePage).add(showMainPage);
+                    break;
+                case 2:
+                    directionCountIndex = index;
+                    tl.add(hideDirectionPage).add(showChoicePage);
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    directionCountIndex = index;
+                    directionCountNext = next;
+                    tl.add(hideDirectionPage).add(showDirectionPage);
+                    break;
+                case 7:
+                    directionCountIndex = index;
+                    directionCountNext = next;
+                    tl.add(hideExpertsPage).add(showDirectionPage);
+                    break;
+                case 8:
+                    tl.add(hideReviewsPage).add(showExpertsPage);
+                    break;
+                case 9:
+                    tl.add(hideStockPage).add(showReviewsPage);
+                    break;
+                case 10:
+                    tl.add(hideContactsPage).add(showStockPage);
+                    break;
+                case 11:
+                    break;
+                case 'menu':
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        let sequenceTimeline = new TimelineLite();
+
+        function showMainPage(index, next){
+            let $indexPage = $listSection.eq(0),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+
+            sequenceTimeline
+                .set($indexPage, {'z-index':50})
+                .set($list1Index, {x:'0%'})
+                .set($list2Index, {x:'0%'})
+                .to($list2Index, .7, {x:'100%'})
+                .to($list1Index, .7, {x:'100%'}, "-=.3")
+        }
+
+        function hideMainPage(index, next){
+            let $indexPage = $listSection.eq(0),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+
+            sequenceTimeline
+                .set($list1Index, {x:'-100%'})
+                .set($list2Index, {x:'-100%'})
+                .to($list1Index, .7, {x:'0%'})
+                .to($list2Index, .7, {x:'0%'}, "-=.3")
+                .set($indexPage, {'z-index':0})
+        }
+
+        function showChoicePage(index){
+            let $indexPage = $listSection.eq(1),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($indexPage, {'z-index':50})
+                .set($list1Index, {x:'0%'})
+                .set($list2Index, {x:'0%'})
+                .to($list2Index, .7, {x:'100%'})
+                .to($list1Index, .7, {x:'100%'}, "-=.3")
+        }
+        function hideChoicePage(index){
+            let $indexPage = $listSection.eq(1),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($list1Index, {x:'-100%'})
+                .set($list2Index, {x:'-100%'})
+                .to($list1Index, .7, {x:'0%'})
+                .to($list2Index, .7, {x:'0%'}, "-=.3")
+                .set($indexPage, {'z-index':0})
+        }
+
+        function showDirectionPage(index){
+            console.log(directionCountNext);
+            let $indexPage = $listSection.eq(directionCountNext-1),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            // console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($indexPage, {'z-index':50})
+                .set($list1Index, {x:'0%'})
+                .set($list2Index, {x:'0%'})
+                .to($list2Index, .7, {x:'100%'})
+                .to($list1Index, .7, {x:'100%'}, "-=.3")
+        }
+        function hideDirectionPage(index){
+
+            let $indexPage = $listSection.eq(directionCountIndex-1),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            // console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($list1Index, {x:'-100%'})
+                .set($list2Index, {x:'-100%'})
+                .to($list1Index, .7, {x:'0%'})
+                .to($list2Index, .7, {x:'0%'}, "-=.3")
+                .set($indexPage, {'z-index':0})
+        }
+
+        function showExpertsPage(index){
+            let $indexPage = $listSection.eq(7),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($indexPage, {'z-index':50})
+                .set($list1Index, {x:'0%'})
+                .set($list2Index, {x:'0%'})
+                .to($list2Index, .7, {x:'100%'})
+                .to($list1Index, .7, {x:'100%'}, "-=.3")
+        }
+        function hideExpertsPage(index){
+            let $indexPage = $listSection.eq(7),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($list1Index, {x:'-100%'})
+                .set($list2Index, {x:'-100%'})
+                .to($list1Index, .7, {x:'0%'})
+                .to($list2Index, .7, {x:'0%'}, "-=.3")
+                .set($indexPage, {'z-index':0})
+        }
+
+        function showReviewsPage(index){
+            let $indexPage = $listSection.eq(8),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($indexPage, {'z-index':50})
+                .set($list1Index, {x:'0%'})
+                .set($list2Index, {x:'0%'})
+                .to($list2Index, .7, {x:'100%'})
+                .to($list1Index, .7, {x:'100%'}, "-=.3")
+        }
+        function hideReviewsPage(index){
+            let $indexPage = $listSection.eq(8),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($list1Index, {x:'-100%'})
+                .set($list2Index, {x:'-100%'})
+                .to($list1Index, .7, {x:'0%'})
+                .to($list2Index, .7, {x:'0%'}, "-=.3")
+                .set($indexPage, {'z-index':0})
+        }
+
+        function showStockPage(index){
+            let $indexPage = $listSection.eq(9),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($indexPage, {'z-index':50})
+                .set($list1Index, {x:'0%'})
+                .set($list2Index, {x:'0%'})
+                .to($list2Index, .7, {x:'100%'})
+                .to($list1Index, .7, {x:'100%'}, "-=.3")
+        }
+        function hideStockPage(index){
+            let $indexPage = $listSection.eq(9),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($list1Index, {x:'-100%'})
+                .set($list2Index, {x:'-100%'})
+                .to($list1Index, .7, {x:'0%'})
+                .to($list2Index, .7, {x:'0%'}, "-=.3")
+                .set($indexPage, {'z-index':0})
+        }
+
+        function showContactsPage(index){
+            let $indexPage = $listSection.eq(10),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($indexPage, {'z-index':50})
+                .set($list1Index, {x:'0%'})
+                .set($list2Index, {x:'0%'})
+                .to($list2Index, .7, {x:'100%'})
+                .to($list1Index, .7, {x:'100%'}, "-=.3")
+        }
+        function hideContactsPage(index){
+            let $indexPage = $listSection.eq(10),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2');
+            console.log($indexPage);
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline
+                .set($list1Index, {x:'-100%'})
+                .set($list2Index, {x:'-100%'})
+                .to($list1Index, .7, {x:'0%'})
+                .to($list2Index, .7, {x:'0%'}, "-=.3")
+                .set($indexPage, {'z-index':0})
+        }
+
+
+
+
+        function animation(index, next){
+            let $indexPage = $listSection.eq(index-1),
+                $nextPage = $listSection.eq(next-1),
+                $list1Index = $indexPage.find('.js-white-list'),
+                $list2Index = $indexPage.find('.js-white-list2'),
+                $list1Next = $nextPage.find('.js-white-list'),
+                $list2Next = $nextPage.find('.js-white-list2');
+
+            let sequenceTimeline2 = new TimelineLite();
+            sequenceTimeline2
+                .set($list1Index, {x:'-100%'})
+                .set($list2Index, {x:'-100%'})
+                .to($list1Index, .7, {x:'0%'})
+                .to($list2Index, .7, {x:'0%'}, "-=.3")
+                .set($indexPage, {'z-index':0})
+                .set($nextPage, {'z-index':50})
+                .to($list2Next, .5, {x:'100%'})
+                .to($list1Next, .5, {x:'100%'}, "-=.2");
+        }
+
+        // function startAnimation(index){};
         function showPage(index){};
         function hidePage(index){};
 

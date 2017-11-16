@@ -26,6 +26,8 @@
     keyboard: true,
     beforeMove: null,
     afterMove: null,
+    moveDown: null,
+    moveUp: null,
     customMove: null,
     loop: true,
     responsiveFallback: false,
@@ -95,32 +97,33 @@
         paginationList = "";
 
 
-
     $.fn.transformPage = function(settings, pos, index) {
       // if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
 
       // Just a simple edit that makes use of modernizr to detect an IE8 browser and changes the transform method into
       // an top animate so IE8 users can also use this script.
-      if($('html').hasClass('ie8')){
-        if (settings.direction == 'horizontal') {
-          var toppos = (el.width()/100)*pos;
-          $(this).animate({left: toppos+'px'},settings.animationTime);
-        } else {
-          var toppos = (el.height()/100)*pos;
-          $(this).animate({top: toppos+'px'},settings.animationTime);
-        }
-      } else{
-        $(this).css({
-          "-webkit-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-         "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
-         "-moz-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-         "-moz-transition": "all " + settings.animationTime + "ms " + settings.easing,
-         "-ms-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-         "-ms-transition": "all " + settings.animationTime + "ms " + settings.easing,
-         "transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-         "transition": "all " + settings.animationTime + "ms " + settings.easing + " " + settings.delay + "ms"
-        });
-      }
+      // if($('html').hasClass('ie8')){
+      //   if (settings.direction == 'horizontal') {
+      //     var toppos = (el.width()/100)*pos;
+      //     $(this).animate({left: toppos+'px'},settings.animationTime);
+      //   } else {
+      //     var toppos = (el.height()/100)*pos;
+      //     $(this).animate({top: toppos+'px'},settings.animationTime);
+      //   }
+      // } else{
+      //   $(this).css({
+      //     "-webkit-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+      //    "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
+      //    "-moz-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+      //    "-moz-transition": "all " + settings.animationTime + "ms " + settings.easing,
+      //    "-ms-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+      //    "-ms-transition": "all " + settings.animationTime + "ms " + settings.easing,
+      //    "transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+      //    "transition": "all " + settings.animationTime + "ms " + settings.easing + " " + settings.delay + "ms"
+      //   });
+      // }
+
+      // $(this).css('z-index',50);
 
       //webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd
       $(this).one('transitionend', function(e) {
@@ -140,11 +143,12 @@
         } else {
           return
         }
-
-      }else {
+      }
+      else {
         pos = (index * 100) * -1;
       }
       if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
+      if (typeof settings.moveDown == 'function') settings.moveDown(index, next.data("index"));
       current.removeClass("active")
       next.addClass("active");
       if(settings.pagination == true) {
@@ -181,6 +185,7 @@
         pos = ((next.data("index") - 1) * 100) * -1;
       }
       if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
+        if (typeof settings.moveUp == 'function') settings.moveUp(index, next.data("index"));
       current.removeClass("active");
       next.addClass("active");
       if(settings.pagination == true) {
@@ -329,26 +334,28 @@
     el.addClass("onepage-wrapper").css("position","relative");
 
     $.each( sections, function(i) {
-      $(this).css({
-        position: "absolute",
-        top: topPos + "%"
-      }).addClass("section disabled").attr("data-index", i+1);
+      // $(this).css({
+      //   position: "absolute",
+      //   top: topPos + "%"
+      // }).addClass("section").attr("data-index", i+1);
+
+      $(this).addClass("section").attr("data-index", i+1);
 
 
-      $(this).css({
-        position: "absolute",
-        left: ( settings.direction == 'horizontal' )
-          ? leftPos + "%"
-          : 0,
-        top: ( settings.direction == 'vertical' || settings.direction != 'horizontal' )
-          ? topPos + "%"
-          : 0
-      });
+      // $(this).css({
+      //   position: "absolute",
+      //   left: ( settings.direction == 'horizontal' )
+      //     ? leftPos + "%"
+      //     : 0,
+      //   top: ( settings.direction == 'vertical' || settings.direction != 'horizontal' )
+      //     ? topPos + "%"
+      //     : 0
+      // });
 
-      if (settings.direction == 'horizontal')
-        leftPos = leftPos + 100;
-      else
-        topPos = topPos + 100;
+      // if (settings.direction == 'horizontal')
+      //   leftPos = leftPos + 100;
+      // else
+      //   topPos = topPos + 100;
 
 
       if(settings.pagination == true) {
@@ -418,7 +425,6 @@
     }
 
     startUrl();
-
 
     $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
       event.preventDefault();
