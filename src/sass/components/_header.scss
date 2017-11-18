@@ -224,16 +224,16 @@ body {
     top: 0;
     left: 0;
     background: #cccccc;
-    z-index: 10;
+    z-index: 60;
     width: 100%;
     height: 100%;
     opacity: 0;
-    visibility: hidden;
+    //visibility: hidden;
     transition: opacity .3s 0s, visibility .3s 0s;
 
     .openMenu & {
-        opacity: 1;
-        visibility: visible;
+        //opacity: 1;
+        //visibility: visible;
     }
 }
 

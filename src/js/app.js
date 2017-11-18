@@ -213,16 +213,7 @@ let moduleApp = {
         });
 
 
-        //button menu
-        $('.js-m-btn-menu').on('click', function(e){
-           e.preventDefault();
 
-           let $this = $(this);
-
-            $this.toggleClass('active');
-
-            $('body').toggleClass('openMenu');
-        });
 
         //init menu section
         $('#myMenu .menu-link').on('click', function(){
@@ -332,9 +323,50 @@ let moduleApp = {
                 animationTime: 500,
                 delayNextPage: 1550
             };
+        // let startPage = 1;
+        let GlobalStatePage = 1;
+        let sequenceTimeline = new TimelineLite();
+        if(history.replaceState){
+            let hash = window.location.hash;
+            let page_index = 1;
+            if(hash != ''){
+                $('.menu-list .menu-item').each(function(ind, elt){
+                    if(hash == $(elt).find('a').attr('href')){
+                        page_index = $(elt).find('a').attr('data-index');
+                        return;
+                    }
+                    GlobalStatePage = page_index;
+                });
+            }
+            else{
+                GlobalStatePage = 1;
+            }
 
+        }
 
-        startAnimation(1);
+        startAnimation(GlobalStatePage);
+
+        //button menu
+        $('.js-m-btn-menu').on('click', function(e){
+            e.preventDefault();
+
+            let $this = $(this);
+
+            if($this.hasClass('active')){
+                // hideMenu();
+                console.log('active')
+                hideRouter('menu');
+                showRouter(GlobalStatePage);
+            }
+            else{
+                console.log('no active')
+                hideRouter(GlobalStatePage);
+                showRouter('menu');
+            }
+
+            $this.toggleClass('active');
+            $('body').toggleClass('openMenu');
+        });
 
         $(".main").onepage_scroll({
             sectionContainer: "section",
@@ -343,29 +375,25 @@ let moduleApp = {
             animationTime: configTime.animationTime,
             delay: configTime.delay,
             updateURL: true,
-            beforeMove: function(index){
-                console.log('before ' + index);
-                // $listSection.eq(index-1).removeClass('active-animate')
-                // $listSection.eq(index-1).addClass('disabled-animate');
-
-                // startAnimation(index);
-
-            },
-            afterMove: function(index){
-                // console.log('after ' + index);
-                // $listSection.eq(index-1).removeClass('disabled-animate')
-                // $listSection.eq(index-1).addClass('active-animate');
-            },
-            customMove: function(index){
-                // console.log('custom ' + index);
+            beforeMove: function(index){},
+            afterMove: function(index){},
+            customMove: function(next){
+                console.log('customMove');
+                hideRouter('menu');
+                showRouter(next);
+                GlobalStatePage = next;
             },
             moveUp: function(index, next){
-                // animation(index, next);
-                animationRouterUp(index, next);
+                console.log('moveUp ' + next);
+                hideRouter(index);
+                showRouter(next);
+                GlobalStatePage = next;
             },
             moveDown: function(index, next){
-                // animation(index, next);
-                animationRouterDown(index, next);
+                console.log('moveDown ' + next);
+                hideRouter(index);
+                showRouter(next);
+                GlobalStatePage = next;
             }
         });
 
@@ -381,110 +409,221 @@ let moduleApp = {
                 .to($list1, 1, {x:"100%"}, "-=.5")
         }
 
-        let directionCountIndex = 0;
-        let directionCountNext = 0;
+        // let directionCountIndex = 0;
+        // let directionCountNext = 0;
 
-        function animationRouterDown(index, next){
+        // function animationRouterDown(index, next){
+        //
+        //     let tl = new TimelineLite();
+        //
+        //     switch(next) {
+        //         case 1:
+        //             tl.add(hideChoicePage).add(showMainPage);
+        //             break;
+        //         case 2:
+        //             tl.add(hideMainPage).add(showChoicePage);
+        //             break;
+        //         case 3:
+        //             directionCountNext = next;
+        //             tl.add(hideChoicePage).add(showDirectionPage);
+        //             break;
+        //         case 4:
+        //         case 5:
+        //         case 6:
+        //         case 7:
+        //             directionCountIndex = index;
+        //             directionCountNext = next;
+        //             tl.add(hideDirectionPage).add(showDirectionPage);
+        //             break;
+        //         case 8:
+        //             directionCountIndex = index;
+        //             tl.add(hideDirectionPage).add(showExpertsPage);
+        //             break;
+        //         case 9:
+        //             tl.add(hideExpertsPage).add(showReviewsPage);
+        //             break;
+        //         case 10:
+        //             tl.add(hideReviewsPage).add(showStockPage);
+        //             break;
+        //         case 11:
+        //             tl.add(hideStockPage).add(showContactsPage);
+        //             break;
+        //         case 'menu':
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        // }
+        //
+        // function animationRouterUp(index, next){
+        //
+        //     let tl = new TimelineLite();
+        //
+        //     switch(next) {
+        //         case 1:
+        //             tl.add(hideChoicePage).add(showMainPage);
+        //             break;
+        //         case 2:
+        //             directionCountIndex = index;
+        //             tl.add(hideDirectionPage).add(showChoicePage);
+        //             break;
+        //         case 3:
+        //         case 4:
+        //         case 5:
+        //         case 6:
+        //             directionCountIndex = index;
+        //             directionCountNext = next;
+        //             tl.add(hideDirectionPage).add(showDirectionPage);
+        //             break;
+        //         case 7:
+        //             directionCountIndex = index;
+        //             directionCountNext = next;
+        //             tl.add(hideExpertsPage).add(showDirectionPage);
+        //             break;
+        //         case 8:
+        //             tl.add(hideReviewsPage).add(showExpertsPage);
+        //             break;
+        //         case 9:
+        //             tl.add(hideStockPage).add(showReviewsPage);
+        //             break;
+        //         case 10:
+        //             tl.add(hideContactsPage).add(showStockPage);
+        //             break;
+        //         case 11:
+        //             break;
+        //         case 'menu':
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        // }
+        //
+        // function animationRouterTo(next){
+        //
+        //     let tl = new TimelineLite();
+        //
+        //     switch(next) {
+        //         case 1:
+        //             tl.add(hideMenu).add(showMainPage);
+        //             break;
+        //         case 2:
+        //             // directionCountIndex = index;
+        //             tl.add(hideMenu).add(showChoicePage);
+        //             break;
+        //         case 3:
+        //         case 4:
+        //         case 5:
+        //         case 6:
+        //             // directionCountIndex = index;
+        //             directionCountNext = next;
+        //             tl.add(hideDirectionPage).add(showDirectionPage);
+        //             break;
+        //         case 7:
+        //             // directionCountIndex = index;
+        //             directionCountNext = next;
+        //             tl.add(hideExpertsPage).add(showDirectionPage);
+        //             break;
+        //         case 8:
+        //             tl.add(hideReviewsPage).add(showExpertsPage);
+        //             break;
+        //         case 9:
+        //             tl.add(hideStockPage).add(showReviewsPage);
+        //             break;
+        //         case 10:
+        //             tl.add(hideContactsPage).add(showStockPage);
+        //             break;
+        //         case 11:
+        //             break;
+        //         case 'menu':
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        // }
 
-            let tl = new TimelineLite();
-            // console.log($listSection.eq(index-1));
-            //.add(TweenLite.set($listSection.eq(index-1), {'z-index':0}))
-            //.add(TweenLite.set($listSection.eq(index-1), {'z-index':0}))
 
-            switch(next) {
+        function showRouter(indexPageShow){
+            console.log(indexPageShow);
+
+            switch(indexPageShow) {
                 case 1:
-                    tl.add(hideChoicePage).add(showMainPage);
+                    showMainPage();
                     break;
                 case 2:
-                    tl.add(hideMainPage).add(showChoicePage);
+                    showChoicePage();
                     break;
                 case 3:
-                    directionCountNext = next;
-                    tl.add(hideChoicePage).add(showDirectionPage);
-                    break;
                 case 4:
                 case 5:
                 case 6:
                 case 7:
-                    directionCountIndex = index;
-                    directionCountNext = next;
-                    tl.add(hideDirectionPage).add(showDirectionPage);
+                    showDirectionPage(indexPageShow);
                     break;
                 case 8:
-                    directionCountIndex = index;
-                    tl.add(hideDirectionPage).add(showExpertsPage);
+                    showExpertsPage();
                     break;
                 case 9:
-                    tl.add(hideExpertsPage).add(showReviewsPage);
+                    showReviewsPage();
                     break;
                 case 10:
-                    tl.add(hideReviewsPage).add(showStockPage);
+                    showStockPage();
                     break;
                 case 11:
-                    tl.add(hideStockPage).add(showContactsPage);
+                    showContactsPage();
                     break;
                 case 'menu':
+                    showMenu()
                     break;
                 default:
                     break;
             }
         }
 
-        function animationRouterUp(index, next){
+        function hideRouter(indexPageHide){
+            console.log(indexPageHide);
 
-            let tl = new TimelineLite();
-            // console.log($listSection.eq(index-1));
-            //.add(TweenLite.set($listSection.eq(index-1), {'z-index':0}))
-            //.add(TweenLite.set($listSection.eq(index-1), {'z-index':0}))
-            console.log(next);
-            switch(next) {
+            switch(indexPageHide) {
                 case 1:
-                    tl.add(hideChoicePage).add(showMainPage);
+                    hideMainPage();
                     break;
                 case 2:
-                    directionCountIndex = index;
-                    tl.add(hideDirectionPage).add(showChoicePage);
+                    hideChoicePage();
                     break;
                 case 3:
                 case 4:
                 case 5:
                 case 6:
-                    directionCountIndex = index;
-                    directionCountNext = next;
-                    tl.add(hideDirectionPage).add(showDirectionPage);
-                    break;
                 case 7:
-                    directionCountIndex = index;
-                    directionCountNext = next;
-                    tl.add(hideExpertsPage).add(showDirectionPage);
+                    hideDirectionPage(indexPageHide);
                     break;
                 case 8:
-                    tl.add(hideReviewsPage).add(showExpertsPage);
+                    hideExpertsPage();
                     break;
                 case 9:
-                    tl.add(hideStockPage).add(showReviewsPage);
+                    hideReviewsPage();
                     break;
                 case 10:
-                    tl.add(hideContactsPage).add(showStockPage);
+                    hideStockPage();
                     break;
                 case 11:
+                    hideContactsPage();
                     break;
                 case 'menu':
+                    hideMenu();
                     break;
                 default:
                     break;
             }
         }
 
-        let sequenceTimeline = new TimelineLite();
 
         function showMainPage(index, next){
             let $indexPage = $listSection.eq(0),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
 
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
 
             sequenceTimeline
                 .set($indexPage, {'z-index':50})
@@ -493,14 +632,13 @@ let moduleApp = {
                 .to($list2Index, .7, {x:'100%'})
                 .to($list1Index, .7, {x:'100%'}, "-=.3")
         }
-
         function hideMainPage(index, next){
             let $indexPage = $listSection.eq(0),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
 
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
 
             sequenceTimeline
                 .set($list1Index, {x:'-100%'})
@@ -514,8 +652,8 @@ let moduleApp = {
             let $indexPage = $listSection.eq(1),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($indexPage, {'z-index':50})
                 .set($list1Index, {x:'0%'})
@@ -527,8 +665,8 @@ let moduleApp = {
             let $indexPage = $listSection.eq(1),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($list1Index, {x:'-100%'})
                 .set($list2Index, {x:'-100%'})
@@ -538,12 +676,12 @@ let moduleApp = {
         }
 
         function showDirectionPage(index){
-            console.log(directionCountNext);
-            let $indexPage = $listSection.eq(directionCountNext-1),
+            //console.log(directionCountNext);
+            let $indexPage = $listSection.eq(index-1),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
             // console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($indexPage, {'z-index':50})
                 .set($list1Index, {x:'0%'})
@@ -553,11 +691,11 @@ let moduleApp = {
         }
         function hideDirectionPage(index){
 
-            let $indexPage = $listSection.eq(directionCountIndex-1),
+            let $indexPage = $listSection.eq(index-1),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
             // console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($list1Index, {x:'-100%'})
                 .set($list2Index, {x:'-100%'})
@@ -570,8 +708,8 @@ let moduleApp = {
             let $indexPage = $listSection.eq(7),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($indexPage, {'z-index':50})
                 .set($list1Index, {x:'0%'})
@@ -584,7 +722,7 @@ let moduleApp = {
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
 
-            let sequenceTimeline2 = new TimelineLite();
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($list1Index, {x:'-100%'})
                 .set($list2Index, {x:'-100%'})
@@ -597,8 +735,8 @@ let moduleApp = {
             let $indexPage = $listSection.eq(8),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($indexPage, {'z-index':50})
                 .set($list1Index, {x:'0%'})
@@ -610,8 +748,8 @@ let moduleApp = {
             let $indexPage = $listSection.eq(8),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($list1Index, {x:'-100%'})
                 .set($list2Index, {x:'-100%'})
@@ -624,8 +762,8 @@ let moduleApp = {
             let $indexPage = $listSection.eq(9),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($indexPage, {'z-index':50})
                 .set($list1Index, {x:'0%'})
@@ -637,8 +775,8 @@ let moduleApp = {
             let $indexPage = $listSection.eq(9),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($list1Index, {x:'-100%'})
                 .set($list2Index, {x:'-100%'})
@@ -651,8 +789,8 @@ let moduleApp = {
             let $indexPage = $listSection.eq(10),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($indexPage, {'z-index':50})
                 .set($list1Index, {x:'0%'})
@@ -664,14 +802,36 @@ let moduleApp = {
             let $indexPage = $listSection.eq(10),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
-            console.log($indexPage);
-            let sequenceTimeline2 = new TimelineLite();
+            // console.log($indexPage);
+            // let sequenceTimeline2 = new TimelineLite();
             sequenceTimeline
                 .set($list1Index, {x:'-100%'})
                 .set($list2Index, {x:'-100%'})
                 .to($list1Index, .7, {x:'0%'})
                 .to($list2Index, .7, {x:'0%'}, "-=.3")
-                .set($indexPage, {'z-index':0})
+                .set($indexPage, {'z-index':0});
+        }
+
+        function showMenu(){
+            let $containerMenu = $('.container-menu'),
+                $containerLeft = $('.container-menu .container__left'),
+                $containerRight = $('.container-menu .container__right');
+
+            sequenceTimeline
+                .set($containerMenu, {x:'100%'})
+                .set($containerLeft, {y:'100px', 'opacity':0})
+                .set($containerRight, {y:'100px', 'opacity':0})
+                .to($containerMenu, .7, {'opacity':1})
+                .to($containerMenu, .7, {x:'0%'}, "-=.5")
+                .to($containerLeft, .6, {y:0,'opacity':1}, "-=.4")
+                .to($containerRight, .6, {y:0, 'opacity':1}, "-=.4")
+        }
+        function hideMenu(){
+            let $containerMenu = $('.container-menu');
+
+            sequenceTimeline
+                .to($containerMenu, .7, {'opacity':0})
+                .to($containerMenu, .7, {x:'100%'}, "-=.5")
         }
 
 
