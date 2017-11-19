@@ -22,6 +22,7 @@
     animationTime: 1000,
     delay: 500,
     pagination: true,
+    customClick: false,
     updateURL: false,
     keyboard: true,
     beforeMove: null,
@@ -29,6 +30,7 @@
     moveDown: null,
     moveUp: null,
     customMove: null,
+    clickMove: null,
     loop: true,
     responsiveFallback: false,
     direction : 'vertical'
@@ -224,6 +226,27 @@
       }
     }
 
+      $.fn.customMoveTo = function(page_index) {
+          current = $(settings.sectionContainer + ".active")
+          next = $(settings.sectionContainer + "[data-index='" + (page_index) + "']");
+          if(next.length > 0) {
+              if (typeof settings.clickMove == 'function') settings.clickMove(next.data("index"));
+              current.removeClass("active");
+              next.addClass("active");
+              $(".onepage-pagination li a" + ".active").removeClass("active");
+              $(".onepage-pagination li a" + "[data-index='" + (page_index) + "']").addClass("active");
+              $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
+              $("body").addClass("viewing-page-"+next.data("index"));
+
+              pos = ((page_index - 1) * 100) * -1;
+
+              if (history.replaceState && settings.updateURL == true) {
+                  updateUrl(page_index);
+              }
+              el.transformPage(settings, pos, page_index);
+          }
+      }
+
     function updateUrl(page_index) {
       let url = $('.menu-list').find('a' + "[data-index='" + (page_index) + "']").attr('href');
 
@@ -334,29 +357,8 @@
     el.addClass("onepage-wrapper").css("position","relative");
 
     $.each( sections, function(i) {
-      // $(this).css({
-      //   position: "absolute",
-      //   top: topPos + "%"
-      // }).addClass("section").attr("data-index", i+1);
 
       $(this).addClass("section").attr("data-index", i+1);
-
-
-      // $(this).css({
-      //   position: "absolute",
-      //   left: ( settings.direction == 'horizontal' )
-      //     ? leftPos + "%"
-      //     : 0,
-      //   top: ( settings.direction == 'vertical' || settings.direction != 'horizontal' )
-      //     ? topPos + "%"
-      //     : 0
-      // });
-
-      // if (settings.direction == 'horizontal')
-      //   leftPos = leftPos + 100;
-      // else
-      //   topPos = topPos + 100;
-
 
       if(settings.pagination == true) {
         paginationList += "<li><a data-index='"+(i+1)+"' href='#" + (i+1) + "'></a></li>"
@@ -422,6 +424,13 @@
         var page_index = $(this).data("index");
         el.moveTo(page_index);
       });
+    }
+
+    if(settings.customClick == true)  {
+        $(".js-link-down").click(function (){
+            // var page_index = $(this).data("index");
+            el.customMoveTo(2);
+        });
     }
 
     startUrl();

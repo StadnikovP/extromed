@@ -35,7 +35,7 @@ include('./components/header.php');
                     <div class="container__left">
                         <div class="window-main__content-custom">
                             <div class="license-block">Лицензия № ЛО-50-0009012 от 14 сентября 2017 г.</div>
-                            <div class="link-down"><span></span></div>
+                            <a href="#choicePage" class="js-link-down link-down"><span></span></a>
                         </div>
                     </div>
                 </div>
@@ -95,10 +95,12 @@ include('./components/header.php');
             <div class="full-screen__right window-direction__image">
                 <div class="window-direction__image-1" style="background-image: url('/dist/img/lor.jpg');"></div>
             </div>
-            <div class="blue-block blue-block__wrapper">
-                <div class="blue-block__content">
-                    <div class="blue-block__title">Отоларинголог</div>
-                    <div class="blue-block__text">В нашей клинике установлен лор комбайн - оборудование немецкой фирмы Otopront, это позволяет оказывать услуги по диагностике и лечению лор органов   по самым высоким мировым стандартам.</div>
+            <div class="wrapper-blue-block">
+                <div class="blue-block blue-block__wrapper">
+                    <div class="blue-block__content">
+                        <div class="blue-block__title">Отоларинголог</div>
+                        <div class="blue-block__text">В нашей клинике установлен лор комбайн - оборудование немецкой фирмы Otopront, это позволяет оказывать услуги по диагностике и лечению лор органов   по самым высоким мировым стандартам.</div>
+                    </div>
                 </div>
             </div>
             <div class="full-screen__wrapper">
@@ -262,11 +264,13 @@ include('./components/header.php');
             <div class="full-screen__right window-direction__image">
                 <div class="window-direction__image-1" style="background-image: url('/dist/img/image-1.jpg');"></div>
             </div>
-            <div class="blue-block blue-block__wrapper">
+            <div class="wrapper-blue-block">
+                <div class="blue-block blue-block__wrapper">
                 <div class="blue-block__content">
                     <div class="blue-block__title">Лечение зубов под седацией </div>
                     <div class="blue-block__text">В нашей клинике установлен аппарат новейшего поколения американской фирмы  Matrix, он  предназначен для ингаляционной седации с использованием закиси азота («веселящего гза»).</div>
                 </div>
+            </div>
             </div>
             <div class="full-screen__wrapper">
                 <div class="full-screen__content full-screen__content-left container container_main window-direction__content">
@@ -362,11 +366,13 @@ include('./components/header.php');
             <div class="full-screen__right window-direction__image">
                 <div class="window-direction__image-1" style="background-image: url('/dist/img/sleep-vis.jpg');"></div>
             </div>
-            <div class="blue-block blue-block__wrapper">
+            <div class="wrapper-blue-block">
+                <div class="blue-block blue-block__wrapper">
                 <div class="blue-block__content">
                     <div class="blue-block__title">Лечение под наркозом</div>
                     <div class="blue-block__text">Лечение зубов под наркозом (в состоянии искусственного сна) – норма для современной стоматологии. Опыт наших врачей, современное оборудование (какое?) и безопасный препарат «Севоран» - позволяет провести качественное, комфортное и безопасное лечение зубов у детей и взрослых.</div>
                 </div>
+            </div>
             </div>
             <div class="full-screen__wrapper">
                 <div class="full-screen__content full-screen__content-left container container_main window-direction__content">
@@ -476,11 +482,13 @@ include('./components/header.php');
             <div class="full-screen__right window-direction__image">
                 <div class="window-direction__image-1" style="background-image: url('/dist/img/pediator.jpg');"></div>
             </div>
-            <div class="blue-block blue-block__wrapper">
+            <div class="wrapper-blue-block">
+                <div class="blue-block blue-block__wrapper">
                 <div class="blue-block__content">
                     <div class="blue-block__title">Педиатрия</div>
                     <div class="blue-block__text">Педиатрия - это наука о болезнях детского организма, их лечении и профилактике.</div>
                 </div>
+            </div>
             </div>
             <div class="full-screen__wrapper">
                 <div class="full-screen__content full-screen__content-left container container_main window-direction__content">
@@ -561,11 +569,13 @@ include('./components/header.php');
             <div class="full-screen__right window-direction__image">
                 <div class="window-direction__image-1" style="background-image: url('/dist/img/analiz.jpg');"></div>
             </div>
-            <div class="blue-block blue-block__wrapper">
+            <div class="wrapper-blue-block">
+                <div class="blue-block blue-block__wrapper">
                 <div class="blue-block__content">
                     <div class="blue-block__title">Анализы</div>
                     <div class="blue-block__text">Взаимодействие с одной из передовых лабораторий позволяет нам выполнять полный спектр анализов для детей и взрослых и получать точные результаты исследований.</div>
                 </div>
+            </div>
             </div>
             <div class="full-screen__wrapper">
                 <div class="full-screen__content full-screen__content-left container container_main window-direction__content">
@@ -606,10 +616,13 @@ include('./components/header.php');
             </div>
             <div class="full-screen__right window-experts__right"></div>
 
-            <div class="slide-center-element">
-                <div class="prev-experts js-prev-experts"><span></span></div>
-                <div class="next-experts js-next-experts"><span></span></div>
+            <div class="wrapper-slide-center-element">
+                <div class="slide-center-element">
+                    <div class="prev-experts js-prev-experts"><span></span></div>
+                    <div class="next-experts js-next-experts"><span></span></div>
+                </div>
             </div>
+
 
             <div class="full-screen__wrapper">
                 <div class="full-screen__content full-screen__content-right container container_main window-experts__content">
@@ -710,9 +723,11 @@ include('./components/header.php');
                             </div>
                         </div>
                     </div>
-                    <div class="slide-center-element">
+                    <div class="wrapper-slide-center-element">
+                        <div class="slide-center-element">
                         <div class="prev-experts js-prev-reviews"><span></span></div>
                         <div class="next-experts js-next-reviews"><span></span></div>
+                    </div>
                     </div>
                     <div class="container__right">
                         <div class="window-reviews__content-wrapper">

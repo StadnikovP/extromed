@@ -2,6 +2,50 @@
 }
 
 
+@media (max-width: 1440px){
+  .window-direction {
+    .container__left{
+      max-width: 47rem;
+    }
+  }
+}
+
+@media (max-width: 1366px){
+  .window-direction {
+    .container__left{
+      max-width: 50rem;
+    }
+  }
+}
+
+@media (max-width: 1000px){
+
+  .main{
+    height: auto;
+  }
+
+  .section{
+    position: relative;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .onepage-wrapper {
+    .section{
+      height: auto;
+    }
+  }
+
+  .white-list, .blue-block{
+    display: none;
+  }
+
+  .window-direction {
+    .container__left{
+      max-width: 100%;
+    }
+  }
+}
 /* ==========================================================================
                MOBILE STYLES
    ========================================================================== */
@@ -160,10 +204,10 @@
     padding-top: 67px;
   }
 
-  .section{
-    height: auto;
-    overflow: hidden;
-  }
+  //.section{
+  //  height: auto;
+  //  overflow: hidden;
+  //}
 
   .window{
     flex-wrap: wrap;

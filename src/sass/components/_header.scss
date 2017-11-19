@@ -89,6 +89,10 @@ body {
         .icon-button{
             display: none;
         }
+
+        &:hover{
+            opacity: .8;
+        }
     }
 
     .logo{
@@ -228,12 +232,12 @@ body {
     width: 100%;
     height: 100%;
     opacity: 0;
-    //visibility: hidden;
+    visibility: hidden;
     transition: opacity .3s 0s, visibility .3s 0s;
 
     .openMenu & {
         //opacity: 1;
-        //visibility: visible;
+        visibility: visible;
     }
 }
 
@@ -277,6 +281,10 @@ body {
 
 .social-item{
     display: inline-block;
+
+    svg{
+        fill: #454545;
+    }
 
     & + .social-item{
         margin-left: 40px;
