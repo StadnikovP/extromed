@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-select sign-form__specialist">
                         <select name="specialist" class="">
-                            <option value="" selected>Выберете специалиста</option>
+                            <option value="" selected>Выберите специалиста</option>
                             <option value="doctor1">Доктор1</option>
                             <option value="doctor2">Доктор2</option>
                             <option value="doctor3">Доктор3</option>

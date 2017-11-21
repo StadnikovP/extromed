@@ -12946,7 +12946,8 @@ let moduleApp = {
                 nextEl: '.js-next-experts',
                 prevEl: '.js-prev-experts',
             },
-            simulateTouch: false
+            simulateTouch: false,
+            allowTouchMove: false
         };
 
         let configSliderExpertsContent = {
@@ -12960,6 +12961,7 @@ let moduleApp = {
                 nextEl: '.js-next-experts',
                 prevEl: '.js-prev-experts',
             },
+            allowTouchMove: false
         };
 
 
@@ -12979,7 +12981,8 @@ let moduleApp = {
                 nextEl: '.js-next-reviews',
                 prevEl: '.js-prev-reviews',
             },
-            simulateTouch: false
+            simulateTouch: false,
+            allowTouchMove: false
         };
 
         let configSliderReviewsContent = {
@@ -12991,6 +12994,7 @@ let moduleApp = {
                 nextEl: '.js-next-reviews',
                 prevEl: '.js-prev-reviews',
             },
+            allowTouchMove: false
         };
 
         let reviewsSwiper = new Swiper('.js-slider-reviews', configSliderReviews);

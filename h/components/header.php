@@ -112,7 +112,7 @@
                                 <div class="menu-list" id="myMenu">
                                     <div data-index="firstPage" class="menu-item active"><a data-index="1" href="#firstPage" class="menu-link">Главная</a></div>
                                     <div data-index="choicePage" class="menu-item"><a data-index="2" href="#choicePage" class="menu-link">Почему выбирают нас</a></div>
-                                    <div data-index="directionPage" class="menu-item"><a data-index="3" href="#directionPage" class="menu-link">Наши напраравления</a></div>
+                                    <div data-index="directionPage" class="menu-item"><a data-index="3" href="#directionPage" class="menu-link">Наши направления</a></div>
                                     <div data-index="expertsPage" class="menu-item"><a data-index="8" href="#expertsPage" class="menu-link">Наши специалисты</a></div>
                                     <div data-index="reviewsPage" class="menu-item"><a data-index="9" href="#reviewsPage" class="menu-link">Отзывы</a></div>
                                     <div data-index="stockPage" class="menu-item"><a data-index="10" href="#stockPage" class="menu-link">Спецпредложения</a></div>

@@ -3557,6 +3557,16 @@ body {
   font-weight: 300;
   line-height: 3rem; }
 
+.full-screen__content h2 {
+  color: #353535;
+  font-family: GothamPro-Medium, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 5rem;
+  font-weight: 500;
+  line-height: 6.5rem;
+  margin-bottom: 6rem; }
+
 .title-section {
   color: #353535;
   font-family: GothamPro-Light, sans-serif;
@@ -3689,13 +3699,6 @@ body {
   height: 85vh; }
   .window-choice__content-wrapper h2 {
     color: #454545;
-    font-family: GothamPro-Medium, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 5rem;
-    font-weight: 500;
-    line-height: 6.5rem;
-    margin-bottom: 6rem;
     margin-top: 12rem; }
   .window-choice__content-wrapper li {
     color: #353535;
@@ -3750,14 +3753,8 @@ body {
 .window-direction__content-wrapper {
   height: 80vh; }
   .window-direction__content-wrapper h2 {
-    color: #353535;
-    font-family: GothamPro-Medium, sans-serif;
-    font-weight: normal;
-    font-style: normal;
     font-size: 4.2rem;
-    font-weight: 500;
     letter-spacing: -0.1px;
-    margin-bottom: 6rem;
     max-width: 530px; }
   .window-direction__content-wrapper > .title {
     color: #353535;
@@ -3787,8 +3784,6 @@ body {
     font-weight: 300;
     line-height: 3.2rem;
     margin-bottom: 2.4rem; }
-    .window-direction__content-wrapper p img {
-      padding-left: 10px; }
   .window-direction__content-wrapper li {
     position: relative;
     color: #353535;
@@ -3892,13 +3887,6 @@ body {
     text-transform: uppercase;
     margin-bottom: 4.5rem; }
   .window-experts__content-wrapper h2 {
-    color: #353535;
-    font-family: GothamPro-Medium, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 5rem;
-    font-weight: 500;
-    line-height: 6.5rem;
     margin-bottom: 3.2rem; }
   .window-experts__content-wrapper ul {
     margin-bottom: 6.5rem; }
@@ -4062,12 +4050,6 @@ body {
     color: #ffffff; }
   .window-reviews__content-wrapper h2 {
     color: #ffffff;
-    font-family: GothamPro-Medium, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 5rem;
-    font-weight: 500;
-    line-height: 6.5rem;
     margin-bottom: 8.2rem; }
   .window-reviews__content-wrapper P {
     color: #ffffff;
@@ -4111,11 +4093,6 @@ body {
     color: #ffffff; }
   .window-stock__content-wrapper h2 {
     color: #ffffff;
-    font-family: GothamPro-Medium, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 5rem;
-    font-weight: 500;
     margin-bottom: 7.9rem; }
   .window-stock__content-wrapper p {
     color: #ffffff;
@@ -4244,12 +4221,6 @@ body {
 
 .window-contacts__content-wrapper h2 {
   color: #454545;
-  font-family: GothamPro-Medium, sans-serif;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 5rem;
-  font-weight: 500;
-  line-height: 6.5rem;
   margin-bottom: 7.4rem; }
 
 .window-contacts__content-wrapper .city {
@@ -4390,7 +4361,7 @@ body {
 .sign-form-wrapper .warning {
   position: absolute;
   right: 15px;
-  top: 5px;
+  top: .3rem;
   fill: #dd0130;
   opacity: 0;
   visibility: hidden;
@@ -4500,7 +4471,15 @@ body {
   .wrapper-header .address {
     display: none; }
   .wrapper-header .logo {
-    padding: 10px 0; }
+    padding: 10px 0;
+    margin-left: -20px; }
+  .wrapper-header .sign-up {
+    font-size: 0;
+    line-height: 0;
+    padding: 10px 10px; }
+    .wrapper-header .sign-up .icon-button {
+      display: block;
+      fill: #fff; }
   .logo svg {
     width: 47px;
     height: 45px; }
@@ -4518,16 +4497,7 @@ body {
     height: 100vh;
     position: fixed; }
   .window-menu__content {
-    overflow-y: scroll; } }
-
-@media (max-width: 640px) {
-  .wrapper-header .sign-up {
-    font-size: 0;
-    line-height: 0;
-    padding: 10px 10px; }
-    .wrapper-header .sign-up .icon-button {
-      display: block;
-      fill: #fff; }
+    overflow-y: scroll; }
   html, body {
     overflow: visible; }
   .site-body {
@@ -4573,6 +4543,10 @@ body {
   .window {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
+  .full-screen__content h2 {
+    font-size: 35px;
+    line-height: 45px;
+    margin-bottom: 35px; }
   .full-screen__wrapper {
     position: relative;
     width: 100%; }
@@ -4599,6 +4573,13 @@ body {
     margin-right: -15px; }
     .window-main__content-custom .link-down span {
       display: none; }
+  .window-main__content-wrapper {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center; }
   .window-choice .full-screen__left {
     width: 100%;
     height: 80vh; }
@@ -4609,11 +4590,15 @@ body {
   .window-choice__content-wrapper {
     height: auto;
     margin-bottom: 50px; }
+  .window-direction__image {
+    margin-bottom: 50px; }
   .window-direction__image-1 {
     height: 80vw; }
   .window-direction__content-wrapper {
     height: auto;
     margin-bottom: 50px; }
+    .window-direction__content-wrapper .title-section {
+      display: none; }
   .window-experts .full-screen__wrapper {
     overflow: visible;
     display: block;
@@ -4651,6 +4636,13 @@ body {
     .window-experts__content-wrapper .swiper-container {
       width: auto;
       height: auto; }
+  .wrapper-slide-center-element {
+    position: relative;
+    left: auto;
+    top: 0;
+    margin-left: auto;
+    margin-top: auto;
+    width: 100%; }
   .window-reviews .full-screen__wrapper {
     width: 100%; }
   .window-reviews__content {
@@ -4664,6 +4656,8 @@ body {
     margin-bottom: 50px; }
     .window-reviews__content-wrapper h2, .window-reviews__content-wrapper p, .window-reviews__content-wrapper .title-section {
       color: #353535; }
+  .window-reviews__content .swiper-reviews {
+    height: 80vw; }
   .window-stock__content {
     display: block;
     padding: 0; }
@@ -4701,7 +4695,9 @@ body {
     display: block; }
   .window-contacts__content-wrapper {
     text-align: center; }
-    .window-contacts__content-wrapper h2, .window-contacts__content-wrapper .title-section, .window-contacts__content-wrapper .contact-wrapper {
+    .window-contacts__content-wrapper .title-section {
+      display: none; }
+    .window-contacts__content-wrapper h2, .window-contacts__content-wrapper .contact-wrapper {
       text-align: left; } }
 
 /* ==========================================================================
