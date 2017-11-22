@@ -599,7 +599,7 @@ include('./components/header.php');
         </div>
     </section>
 
-    <section class="section page4">
+    <section class="section page8">
         <div class="white-list opacity js-white-list"></div>
         <div class="white-list js-white-list2"></div>
         <div class="window window-experts">
@@ -703,7 +703,7 @@ include('./components/header.php');
         </div>
     </section>
 
-    <section class="section page5">
+    <section class="section page9">
         <div class="white-list opacity js-white-list"></div>
         <div class="white-list js-white-list2"></div>
         <div class="window window-reviews">
@@ -715,12 +715,8 @@ include('./components/header.php');
             <div class="full-screen__wrapper">
                 <div class="full-screen__content container container_main window-reviews__content">
                     <div class="container__left">
-                        <div class="swiper-container swiper-reviews js-slider-reviews">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide" style="background-image: url('/dist/img/revies.jpg');"></div>
-                                <div class="swiper-slide" style="background-image: url('/dist/img/revies.jpg');"></div>
-                                <div class="swiper-slide" style="background-image: url('/dist/img/revies.jpg');"></div>
-                            </div>
+                        <div class="avatar-reviews" style="background-image: url('/dist/img/revies.jpg');">
+<!--                            <div class="avatar-block" ></div>-->
                         </div>
                     </div>
                     <div class="wrapper-slide-center-element">
@@ -761,7 +757,7 @@ include('./components/header.php');
         </div>
     </section>
 
-    <section class="section page6">
+    <section class="section page10">
         <div class="white-list opacity js-white-list"></div>
         <div class="white-list js-white-list2"></div>
         <div class="window window-stock">
@@ -779,9 +775,23 @@ include('./components/header.php');
 
                                 <div class="wrapper-form-stock">
                                     <form action="">
-                                        <input type="text" placeholder="Ваше имя">
-                                        <input type="text" placeholder="Номер телефона">
-                                        <button>Подписаться</button>
+                                        <div class="form-input-wrapper is-form-text">
+                                            <input type="text" name="name" data-validation="text" placeholder="Ваше имя">
+                                            <svg class="warning" version="1.1" width="15" height="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 52 52">
+                                                <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M26,50C12.767,50,2,39.233,2,26 S12.767,2,26,2s24,10.767,24,24S39.233,50,26,50z"/>
+                                                <path d="M26,10c-0.552,0-1,0.447-1,1v22c0,0.553,0.448,1,1,1s1-0.447,1-1V11C27,10.447,26.552,10,26,10z"/>
+                                                <path d="M26,37c-0.552,0-1,0.447-1,1v2c0,0.553,0.448,1,1,1s1-0.447,1-1v-2C27,37.447,26.552,37,26,37z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="form-input-wrapper is-form-text">
+                                            <input type="text" name="phone" data-mask="phone" data-validation="text"  placeholder="Номер телефона">
+                                            <svg class="warning" version="1.1" width="15" height="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 52 52">
+                                                <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M26,50C12.767,50,2,39.233,2,26 S12.767,2,26,2s24,10.767,24,24S39.233,50,26,50z"/>
+                                                <path d="M26,10c-0.552,0-1,0.447-1,1v22c0,0.553,0.448,1,1,1s1-0.447,1-1V11C27,10.447,26.552,10,26,10z"/>
+                                                <path d="M26,37c-0.552,0-1,0.447-1,1v2c0,0.553,0.448,1,1,1s1-0.447,1-1v-2C27,37.447,26.552,37,26,37z"/>
+                                            </svg>
+                                        </div>
+                                        <button class="js-form-submit">Подписаться</button>
                                     </form>
                                 </div>
                             </div>
@@ -826,7 +836,7 @@ include('./components/header.php');
         </div>
     </section>
 
-    <section class="section page7">
+    <section class="section page11">
         <div class="white-list opacity js-white-list"></div>
         <div class="white-list js-white-list2"></div>
         <div class="window window-contacts">

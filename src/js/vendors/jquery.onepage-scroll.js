@@ -248,7 +248,7 @@
       }
 
     function updateUrl(page_index) {
-      let url = $('.menu-list').find('a' + "[data-index='" + (page_index) + "']").attr('href');
+      var url = $('.menu-list').find('a' + "[data-index='" + (page_index) + "']").attr('href');
 
       if(url == undefined){
           url = '#directionPage';
@@ -260,7 +260,7 @@
     }
 
     function customNavigation(url) {
-        let $menu = $('.menu-list'),
+        var $menu = $('.menu-list'),
             $item = $menu.find('.menu-item');
 
         $item.removeClass('active');
@@ -275,7 +275,7 @@
 
     function startUrl() {
         if(history.replaceState && window.location.hash){
-            let page_index = 0;
+            var page_index = 0;
           $('.menu-list .menu-item').each(function(ind, elt){
               if(window.location.hash == $(elt).find('a').attr('href')){
                   page_index = $(elt).find('a').attr('data-index');

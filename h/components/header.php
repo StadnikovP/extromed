@@ -1,14 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>
-<html id="html"  class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>
-<html id="html"  class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>
-<html id="html"  class="no-js lt-ie9"> <![endif]-->
-<!--[if IE 9]>
-<html id="html"  class="no-js ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->
-<html id="html"  class="no-js"> <!--<![endif]-->
+<html id="html"  class="no-js">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,8 +47,7 @@
 
             window.addEventListener('resize', rootRemEngine);
         </script>
-
-
+        
         <link rel="stylesheet" href="/dist/main.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">

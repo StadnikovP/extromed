@@ -1,28 +1,29 @@
-let $window, $document, $html;
+var $window, $document, $html;
 
 
-let pageApp = {
+var pageApp = {
     'init': function(){
-        let $thisApp = $('#app');
-        let curApp = $thisApp.attr('data-app');
+        var $thisApp = $('#app');
+        var curApp = $thisApp.attr('data-app');
         this.globalPollifil();
         if (pageApp[curApp]) { pageApp[curApp]($thisApp); }
     },
     'page-address':function($thisApp){
-        let $mapPlace = $thisApp.find('[data-target="ymap"]');
+        var $mapPlace = $thisApp.find('[data-target="ymap"]');
         ymaps.ready(function() {
 
-            let mapLat = 55.751244;
-            let mapLng = 37.618423;
-            let mapZoom = 16;
+            var mapLat = 55.751244;
+            var mapLng = 37.618423;
+            var mapZoom = 16;
 
-            let map = new ymaps.Map($mapPlace[0], {
+            var map = new ymaps.Map($mapPlace[0], {
                 center: [mapLat, mapLng],
                 zoom: mapZoom,
                 type: 'yandex#publicMap',
                 controls: [],
                 behaviors: ['drag', 'dblClickZoom']
             });
+
 
             map.controls.add(
                 new ymaps.control.ZoomControl(),
@@ -35,7 +36,7 @@ let pageApp = {
                 }
             );
 
-            let marker = new ymaps.Placemark(map.getCenter(), {
+            var marker = new ymaps.Placemark(map.getCenter(), {
 
             }, {
                 iconLayout: 'default#image',
@@ -55,19 +56,19 @@ let pageApp = {
         if (!('classList' in document.documentElement) && Object.defineProperty && typeof HTMLElement !== 'undefined') {
             Object.defineProperty(HTMLElement.prototype, 'classList', {
                 get: function() {
-                    let self = this;
+                    var self = this;
 
                     function update(fn) {
                         return function(value) {
-                            let classes = self.className.split(/\s+/);
-                            let index = classes.indexOf(value);
+                            var classes = self.className.split(/\s+/);
+                            var index = classes.indexOf(value);
 
                             fn(classes, index, value);
                             self.className = classes.join(' ');
                         };
                     }
 
-                    let ret = {
+                    var ret = {
                         add: update(function(classes, index, value) {
                             ~index || classes.push(value);
                         }),
@@ -101,9 +102,9 @@ let pageApp = {
         }
 
         (function() {
-            let lastTime = 0;
-            let vendors = ['ms', 'moz', 'webkit', 'o'];
-            for(let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+            var lastTime = 0;
+            var vendors = ['ms', 'moz', 'webkit', 'o'];
+            for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
                 window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
                 window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
                     || window[vendors[x]+'CancelRequestAnimationFrame'];
@@ -111,9 +112,9 @@ let pageApp = {
 
             if (!window.requestAnimationFrame)
                 window.requestAnimationFrame = function(callback, element) {
-                    let currTime = new Date().getTime();
-                    let timeToCall = Math.max(0, 16 - (currTime - lastTime));
-                    let id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                    var currTime = new Date().getTime();
+                    var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                    var id = window.setTimeout(function() { callback(currTime + timeToCall); },
                         timeToCall);
                     lastTime = currTime + timeToCall;
                     return id;
@@ -127,7 +128,7 @@ let pageApp = {
     },
 };
 
-let moduleApp = {
+var moduleApp = {
     'init': function () {
         this.resizeGlobal();
         this.resizeLogo();
@@ -139,20 +140,22 @@ let moduleApp = {
         this.startupMessage();
         this.initSlider();
         this.pagePilingInit();
+        this.formValidation();
+        this.mobileMenu();
 
     },
     'executeModules':function(){
         $('[data-is]').each(function(i,thisModule){
-            let $thisModule = $(thisModule);
-            let thisModuleName = $thisModule.attr('data-is');
+            var $thisModule = $(thisModule);
+            var thisModuleName = $thisModule.attr('data-is');
             if(moduleApp[thisModuleName]) { moduleApp[thisModuleName]($thisModule); }
         });
     },
     'executeSFX':function(){
         if (appConfig.mobileVersion || device.tablet()) { return false; }
         $('[data-sfx]').each(function(i,thisModule){
-            let $thisModule = $(thisModule);
-            let thisModuleName = $thisModule.attr('data-sfx');
+            var $thisModule = $(thisModule);
+            var thisModuleName = $thisModule.attr('data-sfx');
             if(moduleApp.SFXModules[thisModuleName]) { moduleApp.SFXModules[thisModuleName]($thisModule); }
         });
     },
@@ -162,7 +165,7 @@ let moduleApp = {
         $('.js-tabs-controls').on('click', function(e){
             e.preventDefault();
 
-            let $this = $(this),
+            var $this = $(this),
                 $item = $this.closest('.tabs-controls-item'),
                 $parent = $this.closest('.js-tabs-wrapper'),
                 $contentItem = $parent.find('.js-tabs-item'),
@@ -174,7 +177,7 @@ let moduleApp = {
                 .siblings()
                 .removeClass('active');
 
-            let $perent = $this.parents('.window-direction');
+            var $perent = $this.parents('.window-direction');
             if($(document).width() > 900) {
                 if ($this.hasClass('js-price')) {
                     $perent.addClass('full-screen__container');
@@ -189,7 +192,7 @@ let moduleApp = {
         $('.js-accordion-trigger').on('click', function(e){
             e.preventDefault();
 
-            let
+            var
                 $this = $(this),
                 item = $this.closest('.accordion-item'),
                 list = $this.closest('.accordion-list'),
@@ -212,9 +215,6 @@ let moduleApp = {
 
         });
 
-
-
-
         //init menu section
         $('#myMenu .menu-link').on('click', function(){
             $('body').toggleClass('openMenu');
@@ -223,7 +223,7 @@ let moduleApp = {
 
         //pop-up form sign
         $('.js-sign').on('click', function(){
-            let template = $('.js-form-sigh').html();
+            var template = $('.js-form-sigh').html();
             $.fancybox.open({
                 wrapCSS : 'fb-fancy-default',
                 type: 'html',
@@ -240,15 +240,15 @@ let moduleApp = {
                 nextSpeed: 300,
                 prevSpeed: 300,
                 beforeShow:function(){
-                    // let $thisFancy = $('.fancybox-inner');
+                    // var $thisFancy = $('.fancybox-inner');
                     //
-                    // let $thisChosen = $thisFancy.find('[data-is="chosen"]');
+                    // var $thisChosen = $thisFancy.find('[data-is="chosen"]');
                     // moduleApp.chosen($thisChosen);
                     //
-                    // let $cityTarget = $thisFancy.find('.js-fb-city-target');
+                    // var $cityTarget = $thisFancy.find('.js-fb-city-target');
                     //
                     // $thisFancy.find('.js-fb-city-action').on('change',function(){
-                    //     let action = !!($(this).find('option:selected').attr('data-city'));
+                    //     var action = !!($(this).find('option:selected').attr('data-city'));
                     //     if (action) {
                     //         $cityTarget.slideDown(200, function(){
                     //             if (!$cityTarget.hasClass('state-inited')) {
@@ -271,7 +271,7 @@ let moduleApp = {
 
                 },
                 afterShow:function(){
-                    let $thisSubmit = $('.fancybox-inner .js-fb-submit');//$thisFancy.find('.js-fb-submit');
+                    var $thisSubmit = $('.fancybox-inner .js-fb-submit');//$thisFancy.find('.js-fb-submit');
                     // console.log($thisSubmit);
                     moduleApp.formValidation($thisSubmit);
 
@@ -282,7 +282,7 @@ let moduleApp = {
 
         //hover element price
         $('.js-item-element').hover(function () {
-            let $this = $(this),
+            var $this = $(this),
                 $parent = $this.parents('.price-list'),
                 $allElements = $parent.find('.js-item-element');
 
@@ -293,8 +293,8 @@ let moduleApp = {
 
 
         $('.js-certificates').on('click', function(){
-            let updateSize = true;
-            let $this = $(this),
+            var updateSize = true;
+            var $this = $(this),
                thisSertificat = $this.parent('div').find('.certificat-list').slideToggle(300);
 
             $this.toggleClass('active');
@@ -310,6 +310,14 @@ let moduleApp = {
         function resizeInitFunction(){
             moduleApp.resizeLogo();
             moduleApp.pagePilingInit();
+
+            var w=screen.width,
+                h=screen.height;
+
+            if (w < 737 || h < 737 || device.mobile()) {
+                appConfig.mobileVersion = true;
+            }
+            appConfig.desktopVersion = !appConfig.mobileVersion;
         }
     },
     'resizeLogo': function(){
@@ -322,18 +330,18 @@ let moduleApp = {
         }
     },
     'pagePilingInit': function(){
-        let $listSection = $('.main section');
-        let configTime = {
+        var $listSection = $('.main section');
+        var configTime = {
                 delay: 1550,
                 animationTime: 500,
                 delayNextPage: 1550
             };
-        let GlobalStatePage = 1;
-        let sequenceTimeline = new TimelineLite();
+        var GlobalStatePage = 1;
+        var sequenceTimeline = new TimelineLite();
 
         if(history.replaceState){
-            let hash = window.location.hash;
-            let page_index = 1;
+            var hash = window.location.hash;
+            var page_index = 1;
 
             if(hash != ''){
                 $('.menu-list .menu-item').each(function(ind, elt){
@@ -354,26 +362,23 @@ let moduleApp = {
         $('.js-m-btn-menu').on('click', function(e){
             e.preventDefault();
 
-            let $this = $(this);
+            var $this = $(this);
 
-            if($this.hasClass('active')){
-                hideRouter('menu');
-                showRouter(GlobalStatePage);
+            if(appConfig.desktopVersion){
+                if($this.hasClass('active')){
+                    hideRouter('menu');
+                    showRouter(GlobalStatePage);
+                }
+                else{
+                    hideRouter(GlobalStatePage);
+                    showRouter('menu');
+                }
             }
-            else{
-                hideRouter(GlobalStatePage);
-                showRouter('menu');
-            }
+
 
             $this.toggleClass('active');
             $('body').toggleClass('openMenu');
         });
-
-        // $('.js-link-down').on('click', function(e){
-        //     hideRouter(GlobalStatePage)
-        //     GlobalStatePage++;
-        //     showRouter(GlobalStatePage);
-        // });
 
 
         $(".main").onepage_scroll({
@@ -385,7 +390,9 @@ let moduleApp = {
             updateURL: true,
             customClick: true,
             customMove: function(next){
-                hideRouter('menu');
+                if(appConfig.desktopVersion){
+                    hideRouter('menu');
+                }
                 showRouter(next);
                 GlobalStatePage = next;
             },
@@ -405,20 +412,6 @@ let moduleApp = {
                 GlobalStatePage = next;
             }
         });
-
-        // function startAnimation(index){
-        //     console.log('start');
-        //     $listSection.eq(index-1).addClass('active-page');
-        //     let $list1 = $listSection.eq(index-1).find('.js-white-list');
-        //     let $list2 = $listSection.eq(index-1).find('.js-white-list2');
-        //     let sequenceTimeline = new TimelineLite();
-        //
-        //
-        //     sequenceTimeline
-        //         .to($list2, 1, {x:"100%"})
-        //         .to($list1, 1, {x:"100%"}, "-=.5")
-        // }
-
 
 
         function showRouter(indexPageShow){
@@ -495,7 +488,7 @@ let moduleApp = {
 
 
         function showMainPage(){
-            let $indexPage = $listSection.eq(0),
+            var $indexPage = $listSection.eq(0),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2'),
                 $containerLeft = $indexPage.find('.container__left');
@@ -510,7 +503,7 @@ let moduleApp = {
                 .to($containerLeft, .8, {y:0, opacity:1}, "-=.7")
         }
         function hideMainPage(){
-            let $indexPage = $listSection.eq(0),
+            var $indexPage = $listSection.eq(0),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
 
@@ -523,7 +516,7 @@ let moduleApp = {
         }
 
         function showChoicePage(){
-            let $indexPage = $listSection.eq(1),
+            var $indexPage = $listSection.eq(1),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2'),
                 $containerRight = $indexPage.find('.container__right');
@@ -538,7 +531,7 @@ let moduleApp = {
                 .to($containerRight, .8, {y:0, opacity:1}, "-=.5")
         }
         function hideChoicePage(){
-            let $indexPage = $listSection.eq(1),
+            var $indexPage = $listSection.eq(1),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
 
@@ -551,7 +544,7 @@ let moduleApp = {
         }
 
         function showDirectionPage(index){
-            let $indexPage = $listSection.eq(index-1),
+            var $indexPage = $listSection.eq(index-1),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2'),
                 $blueBlock = $indexPage.find('.blue-block'),
@@ -570,7 +563,7 @@ let moduleApp = {
         }
         function hideDirectionPage(index){
 
-            let $indexPage = $listSection.eq(index-1),
+            var $indexPage = $listSection.eq(index-1),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2'),
                 $blueBlock = $indexPage.find('.blue-block');
@@ -585,7 +578,7 @@ let moduleApp = {
         }
 
         function showExpertsPage(){
-            let $indexPage = $listSection.eq(7),
+            var $indexPage = $listSection.eq(7),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2'),
                 $containerRight = $indexPage.find('.container__right'),
@@ -603,7 +596,7 @@ let moduleApp = {
                 .to($slideCenterElement, .6, {x:'0%', opacity: 1}, "-=.1")
         }
         function hideExpertsPage(){
-            let $indexPage = $listSection.eq(7),
+            var $indexPage = $listSection.eq(7),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
 
@@ -616,7 +609,7 @@ let moduleApp = {
         }
 
         function showReviewsPage(){
-            let $indexPage = $listSection.eq(8),
+            var $indexPage = $listSection.eq(8),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2'),
                 $containerRight = $indexPage.find('.container__right'),
@@ -634,7 +627,7 @@ let moduleApp = {
                 .to($slideCenterElement, .6, {x:'0%', opacity: 1}, "-=.1")
         }
         function hideReviewsPage(){
-            let $indexPage = $listSection.eq(8),
+            var $indexPage = $listSection.eq(8),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
 
@@ -647,7 +640,7 @@ let moduleApp = {
         }
 
         function showStockPage(){
-            let $indexPage = $listSection.eq(9),
+            var $indexPage = $listSection.eq(9),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2'),
                 $containerLeft = $indexPage.find('.container__left');
@@ -662,7 +655,7 @@ let moduleApp = {
                 .to($containerLeft, .7, {y:'0px', opacity: 1}, "-=.3")
         }
         function hideStockPage(){
-            let $indexPage = $listSection.eq(9),
+            var $indexPage = $listSection.eq(9),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
 
@@ -675,7 +668,7 @@ let moduleApp = {
         }
 
         function showContactsPage(){
-            let $indexPage = $listSection.eq(10),
+            var $indexPage = $listSection.eq(10),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2'),
                 $containerLeft = $indexPage.find('.container__left');
@@ -690,7 +683,7 @@ let moduleApp = {
                 .to($containerLeft, .7, {y:'0px', opacity: 1}, "-=.3")
         }
         function hideContactsPage(){
-            let $indexPage = $listSection.eq(10),
+            var $indexPage = $listSection.eq(10),
                 $list1Index = $indexPage.find('.js-white-list'),
                 $list2Index = $indexPage.find('.js-white-list2');
 
@@ -703,7 +696,7 @@ let moduleApp = {
         }
 
         function showMenu(){
-            let $containerMenu = $('.container-menu'),
+            var $containerMenu = $('.container-menu'),
                 $containerLeft = $('.container-menu .container__left'),
                 $containerRight = $('.container-menu .container__right');
 
@@ -717,7 +710,7 @@ let moduleApp = {
                 .to($containerRight, .6, {y:0, 'opacity':1}, "-=.4")
         }
         function hideMenu(){
-            let $containerMenu = $('.container-menu');
+            var $containerMenu = $('.container-menu');
 
             sequenceTimeline
                 .to($containerMenu, .7, {'opacity':0})
@@ -726,7 +719,7 @@ let moduleApp = {
 
     },
     'initSlider': function(update){
-        let configSlideChoice = {
+        var configSlideChoice = {
             slidesPerView: 1,
             spaceBetween: 0,
             centeredSlides: true,
@@ -743,7 +736,7 @@ let moduleApp = {
 
         };
 
-        let mySwiper = new Swiper('.js-slider-choice', configSlideChoice);
+        var mySwiper = new Swiper('.js-slider-choice', configSlideChoice);
 
         mySwiper.on('slideChange', function () {
             removeProgressSlide();
@@ -755,7 +748,7 @@ let moduleApp = {
         });
 
         function addProgressSlide(){
-            let progressBar = '<div class="js-progress progress-bar-slider"></div>';
+            var progressBar = '<div class="js-progress progress-bar-slider"></div>';
             $('.js-slider-choice').append(progressBar);
         }
 
@@ -769,7 +762,7 @@ let moduleApp = {
 
 
 
-        let configSliderExperts = {
+        var configSliderExperts = {
             slidesPerView: 1,
             spaceBetween: 0,
             centeredSlides: true,
@@ -781,7 +774,7 @@ let moduleApp = {
             allowTouchMove: false
         };
 
-        let configSliderExpertsContent = {
+        var configSliderExpertsContent = {
             slidesPerView: 1,
             spaceBetween: 0,
             centeredSlides: true,
@@ -796,27 +789,27 @@ let moduleApp = {
         };
 
 
-        let expertsSwiper = new Swiper('.js-slider-experts', configSliderExperts);
-        let expertsContentSwiper = new Swiper('.js-slider-experts-content', configSliderExpertsContent);
+        var expertsSwiper = new Swiper('.js-slider-experts', configSliderExperts);
+        var expertsContentSwiper = new Swiper('.js-slider-experts-content', configSliderExpertsContent);
 
         if(update){
             expertsContentSwiper.updateSize();
         }
 
 
-        let configSliderReviews = {
-            slidesPerView: 1,
-            spaceBetween: 0,
-            centeredSlides: true,
-            navigation: {
-                nextEl: '.js-next-reviews',
-                prevEl: '.js-prev-reviews',
-            },
-            simulateTouch: false,
-            allowTouchMove: false
-        };
+        // var configSliderReviews = {
+        //     slidesPerView: 1,
+        //     spaceBetween: 0,
+        //     centeredSlides: true,
+        //     navigation: {
+        //         nextEl: '.js-next-reviews',
+        //         prevEl: '.js-prev-reviews',
+        //     },
+        //     simulateTouch: false,
+        //     allowTouchMove: false
+        // };
 
-        let configSliderReviewsContent = {
+        var configSliderReviewsContent = {
             slidesPerView: 1,
             spaceBetween: 0,
             centeredSlides: true,
@@ -825,21 +818,21 @@ let moduleApp = {
                 nextEl: '.js-next-reviews',
                 prevEl: '.js-prev-reviews',
             },
-            allowTouchMove: false
+            // allowTouchMove: false,
         };
 
-        let reviewsSwiper = new Swiper('.js-slider-reviews', configSliderReviews);
-        let reviewsContentSwiper = new Swiper('.js-slider-reviews-content', configSliderReviewsContent);
+        // var reviewsSwiper = new Swiper('.js-slider-reviews', configSliderReviews);
+        var reviewsContentSwiper = new Swiper('.js-slider-reviews-content', configSliderReviewsContent);
 
 
     },
     'toolsGlobalSubscribe':function($thisModule){
         $document.on('click','.ts-submit',function(e){
             e.preventDefault();
-            let $this = $(this);
-            let $parent =  $this.closest('.is-tools-subscribe');
-            let $thisInput = $parent.find('.ts-input');
-            let regexEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            var $this = $(this);
+            var $parent =  $this.closest('.is-tools-subscribe');
+            var $thisInput = $parent.find('.ts-input');
+            var regexEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 
             if (regexEmail.test($thisInput.val()) && $thisInput.val().length > 0) {
@@ -855,13 +848,13 @@ let moduleApp = {
     },
     'pageLoader': function(){
         $document.on('click','a',function(){
-            let $this = $(this);
-            let noProgress = false;
+            var $this = $(this);
+            var noProgress = false;
 
-            let href = $this.attr('href');
-            let targetBlank = $this.attr('target') || false;
-            let inSwiper = $this.closest('.swiper-container').length;
-            let downloadAttr = $this.attr('download');
+            var href = $this.attr('href');
+            var targetBlank = $this.attr('target') || false;
+            var inSwiper = $this.closest('.swiper-container').length;
+            var downloadAttr = $this.attr('download');
             if (typeof downloadAttr !== typeof undefined && downloadAttr !== false) {
                 noProgress = true;
             }
@@ -892,7 +885,7 @@ let moduleApp = {
     },
     'startupMessage':function(){
         if (appConfig.startupMessage.title && appConfig.startupMessage.message) {
-            let template = '<div class="fb-modal-default">';
+            var template = '<div class="fb-modal-default">';
             template += '<div class="fbp-title">'+appConfig.startupMessage.title+'</div>';
             template += '<div class="fbp-message">'+appConfig.startupMessage.message+'</div>';
             template += '<div class="cntr"><a href="#" class="is-button-a js-fancy-close"><span>Ок</span></a></div>';
@@ -917,14 +910,14 @@ let moduleApp = {
     },
     'SFXModules':{
         'sfx-a':function($thisModule){
-            let gfxFromLeft = {
+            var gfxFromLeft = {
                 'data-when':'enter',
                 'data-from':'.8',
                 'data-to':'0',
                 'data-translatex':'-40'
             };
 
-            let gfxFromRight = {
+            var gfxFromRight = {
                 'data-when':'enter',
                 'data-from':'.8',
                 'data-to':'0',
@@ -935,14 +928,14 @@ let moduleApp = {
             $thisModule.find('.lt-column-right .lt-tile').addClass('scrollme animateme').attr(gfxFromRight);
         },
         'sfx-b':function($thisModule){
-            let gfxFromLeft = {
+            var gfxFromLeft = {
                 'data-when':'enter',
                 'data-from':'.8',
                 'data-to':'0',
                 'data-translatex':'-40'
             };
 
-            let gfxFormRight = {
+            var gfxFormRight = {
                 'data-when':'enter',
                 'data-from':'.8',
                 'data-to':'0',
@@ -955,7 +948,7 @@ let moduleApp = {
             $thisModule.find('.lt-row:odd').find('.lt-row-image').addClass('scrollme animateme').attr(gfxFromLeft);
         },
         'sfx-c':function($thisModule){
-            let gfxFromRight = {
+            var gfxFromRight = {
                 'data-when':'enter',
                 'data-from':'.8',
                 'data-to':'0',
@@ -966,14 +959,14 @@ let moduleApp = {
         },
         'sfx-d':function($thisModule){
             return false;
-            let gfxFromLeft = {
+            var gfxFromLeft = {
                 'data-when':'enter',
                 'data-from':'.8',
                 'data-to':'0',
                 'data-translatex':'-40'
             };
 
-            let gfxFormRight = {
+            var gfxFormRight = {
                 'data-when':'enter',
                 'data-from':'.8',
                 'data-to':'0',
@@ -987,7 +980,7 @@ let moduleApp = {
         },
         'sfx-e':function($thisModule){
 
-            let gfxFromLeft = {
+            var gfxFromLeft = {
                 'data-when':'enter',
                 'data-from':'.8',
                 'data-to':'0',
@@ -999,7 +992,7 @@ let moduleApp = {
     'formValidation': function ($submitBtn, submitFunction) {
         console.log($submitBtn);
 
-        let params = {
+        var params = {
             'formValidationAttr':'data-validation',
             'formInputClass':'is-form-text',
             'formCheckboxClass':'is-form-checkbox',
@@ -1013,13 +1006,13 @@ let moduleApp = {
         $submitBtn.closest('form').addClass('is-form-validation');
         $submitBtn.click(function(e){
             e.preventDefault();
-            let $this = $(this);
+            var $this = $(this);
             if ($this.hasClass(params.submitDisabledClass) || $this.hasClass(params.submitProgressClass)) {
                 return false;
             }
-            let $form = $this.closest('form');
-            let $forms = $form.find('['+params.formValidationAttr+']');
-            let result = formChecking($forms, true);
+            var $form = $this.closest('form');
+            var $forms = $form.find('['+params.formValidationAttr+']');
+            var result = formChecking($forms, true);
             if (result) {
                 if (submitFunction) {
                     submitFunction($form);
@@ -1029,7 +1022,7 @@ let moduleApp = {
                 }
             } else {
                 $forms.on('keyup keypress change', function(){
-                    let $current = $(this);
+                    var $current = $(this);
                     setTimeout(function(){ formChecking($current); }, 50);
                 });
             }
@@ -1039,7 +1032,7 @@ let moduleApp = {
         $(document).on('keydown', function (e) {
             return true;
             if (e.keyCode == 13) {
-                let $thisFocus = $(document.activeElement);
+                var $thisFocus = $(document.activeElement);
                 if ($thisFocus.is('textarea')) {
                     return true;
                 }
@@ -1058,16 +1051,16 @@ let moduleApp = {
 
             onFocus = onFocus || false;
 
-            let noError = true;
+            var noError = true;
 
             $inp.each(function (ind, elm) {
-                let $this = $(elm);
+                var $this = $(elm);
 
-                let mask = $this.attr(params.formValidationAttr);
-                let value = $this.val();
-                let placeHolder = $this.attr('placeholder');
-                let regex;
-                let subError = true;
+                var mask = $this.attr(params.formValidationAttr);
+                var value = $this.val();
+                var placeHolder = $this.attr('placeholder');
+                var regex;
+                var subError = true;
 
                 if (mask == 'text') {
                     if ((value.length < 1) || (value == placeHolder)) {
@@ -1142,7 +1135,7 @@ let moduleApp = {
                 }
 
                 if (mask == 'file') {
-                    let parts = $(this).val().split('.');
+                    var parts = $(this).val().split('.');
                     if (parts==""){
                         noError = false;
                         $this.closest('.'+params.formInputClass).addClass(params.formShowErrorClass);
@@ -1167,7 +1160,7 @@ let moduleApp = {
 
                 if (mask == 'vacancy-file-link') {
 
-                    let $thisGroup = $('['+params.formValidationAttr+'="vacancy-file-link"]:visible');
+                    var $thisGroup = $('['+params.formValidationAttr+'="vacancy-file-link"]:visible');
 
                     if ($thisGroup.length === 0) { return true; }
 
@@ -1193,10 +1186,54 @@ let moduleApp = {
         // add mask
 
         $submitBtn.closest('form').find('[data-mask]').each(function(i,thisForm){
-            let $thisForm = $(thisForm);
-            let thisMask = $thisForm.attr('data-mask');
+            var $thisForm = $(thisForm);
+            var thisMask = $thisForm.attr('data-mask');
             if (thisMask=="phone") { $thisForm.addClass('state-with-mask').mask("+7 (999) 999 99 99", {placeholder:"–"}); }
         });
+    },
+    'mobileMenu': function(){
+        if(window.innerWidth < 941){
+
+            var hash = window.location.hash,
+                page_index = 0;
+
+            if(hash != ''){
+                $('.menu-list .menu-item').each(function(ind, elt){
+                    if(hash == $(elt).find('a').attr('href')){
+                        page_index = $(elt).find('a').attr('data-index');
+                        return;
+                    }
+                });
+
+                var $section = $('.page' + page_index),
+                    topPositionSection = $section.offset().top - 66;
+
+                setTimeout(function(){
+                    $('html,body').animate({'scrollTop': topPositionSection}, 500);
+                }, 500);
+            }
+
+            $('.menu-link').on('click', function(e){
+                e.preventDefault();
+
+                $('.menu-item').removeClass('active');
+                $(this).parent('.menu-item').addClass('active');
+
+                var url = $(this).attr('href');
+
+                if(history.replaceState){
+                    var href = window.location.href.substr(0,window.location.href.indexOf('#')) + url;
+                    history.pushState( {}, document.title, href );
+                }
+
+                var $section = $('.page' + $(this).attr('data-index'));
+                // console.log($(this).attr('data-index'));
+                var topPositionSection = $section.offset().top - 66;
+
+                $('html,body').animate({'scrollTop': topPositionSection}, 500);
+
+            })
+        }
     }
 };
 
@@ -1214,10 +1251,10 @@ $(document).ready(function(){
 
 
 function initMap() {
-    let uluru = {lat: 56.00926295, lng: 37.85537839};
-    let markerIcon = "/dist/img/map-pin.png";
+    var uluru = {lat: 56.00926295, lng: 37.85537839};
+    var markerIcon = "/dist/img/map-pin.png";
 
-    let map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
         center: uluru,
         mapTypeControl: false,
@@ -1400,7 +1437,7 @@ function initMap() {
         ]
     });
 
-    let marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
         position: uluru,
         map: map,
         icon: markerIcon,

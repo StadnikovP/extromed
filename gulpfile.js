@@ -15,13 +15,11 @@ var assetsPath = './dist';
 var jslibs = [
   sourcesPath + '/js/vendors/jquery-3.1.0.min.js',
   sourcesPath + '/js/vendors/jquery.fancybox.js',
-  // sourcesPath + '/js/vendors/swiper3.min.js',
   sourcesPath + '/js/vendors/swiper3.js',
-  // sourcesPath + '/js/vendors/jquery.onepage-scroll.js',
+  sourcesPath + '/js/vendors/TweenMax.js',
+  sourcesPath + '/js/vendors/jquery.onepage-scroll.js',
   sourcesPath + '/js/vendors/jquery.maskedinput.min.js',
-  // sourcesPath + '/js/vendors/sticky-kit.js',
-  // sourcesPath + '/js/vendors/jquery.maskedinput.min.js',
-  // sourcesPath + '/js/vendors/smooth.scroll.js',
+  sourcesPath + '/js/vendors/jquery.mCustomScrollbar.js'
 ];
 
 var jsApp = [
