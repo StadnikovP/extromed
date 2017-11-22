@@ -313,7 +313,7 @@ let moduleApp = {
         }
     },
     'resizeLogo': function(){
-        if($(document).width() < 940){
+        if($(document).width() < 941){
             $('.logo svg').attr('viewBox', '0 0 47 44');
             $('.mCustomScrollbar').attr('class', '');
         }
