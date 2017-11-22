@@ -47,7 +47,7 @@
 
             window.addEventListener('resize', rootRemEngine);
         </script>
-        
+
         <link rel="stylesheet" href="/dist/main.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">

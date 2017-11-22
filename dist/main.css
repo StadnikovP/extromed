@@ -4504,9 +4504,11 @@ body {
     .wrapper-header .sign-up .icon-button {
       display: block;
       fill: #fff; }
-  .openMenu .wrapper-header .logo, .openMenu .wrapper-header .sign-up {
-    opacity: 1;
-    visibility: visible; }
+  .openMenu .wrapper-header {
+    background: #ffffff; }
+    .openMenu .wrapper-header .logo, .openMenu .wrapper-header .sign-up {
+      opacity: 1;
+      visibility: visible; }
   .mobile-btn-menu.active span:after, .mobile-btn-menu.active span:before {
     background-color: #454545; }
   .logo svg {
