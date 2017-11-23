@@ -154,6 +154,10 @@
     .window-menu__left, .window-menu__right{
       display: none;
     }
+
+    .full-screen__wrapper{
+      height: 100%;
+    }
   }
 
   .window-menu__content{

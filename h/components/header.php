@@ -20,11 +20,12 @@
 
             (function(a,d,vp){
                 var w=screen.width,h=screen.height;
-                if (w<a || h<a || device.mobile()) {
+                if (w<a || h<a || device.mobile() || device.tablet()) {
                     appConfig.mobileVersion = true;
                 } else {
                     document.getElementById(vp).setAttribute('content','width='+d);
                 }
+                console.log('mobile= ' + appConfig.mobileVersion);
                 appConfig.desktopVersion = !appConfig.mobileVersion;
             })(737,940,'viewport');
         </script>
