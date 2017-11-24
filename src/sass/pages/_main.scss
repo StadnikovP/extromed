@@ -644,8 +644,16 @@
   .container__left {
     max-width: 36rem;
     padding: 0;
+    transition: width .3s 0s;
   }
 
+  &.full-screen__container{
+    .container__left {
+      width: 100%;
+      max-width: 100%;
+      padding-right: 0;
+    }
+  }
 }
 
 .window-direction__image{
@@ -741,16 +749,6 @@
       height: 1px;
       background-color: #454545;
     }
-  }
-}
-
-.container__left{
-  transition: width .3s 0s;
-
-  .full-screen__container &{
-    width: 100%;
-    max-width: 100%;
-    padding-right: 0;
   }
 }
 

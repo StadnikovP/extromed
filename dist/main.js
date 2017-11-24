@@ -15517,7 +15517,7 @@ var moduleApp = {
 
         $(".main").onepage_scroll({
             sectionContainer: "section",
-            responsiveFallback: 1000,
+            responsiveFallback: 940,
             loop: false,
             animationTime: configTime.animationTime,
             delay: configTime.delay,

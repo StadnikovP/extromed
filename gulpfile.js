@@ -31,7 +31,7 @@ var jsApp = [
 gulp.task('sass', function() {
   return gulp.src(sourcesPath + '/sass/main.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer('last 5 version', 'safari 5', 'Firefox 14', 'ie 10', 'opera 12.1'))
+    .pipe(autoprefixer('safari 6', 'Firefox 14', 'ie 10', 'opera 12.1'))
     .pipe(gulp.dest(assetsPath))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
