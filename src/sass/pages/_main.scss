@@ -139,6 +139,8 @@
   position: absolute;
   bottom: 0;
   left: 50%;
+  width: 20%;
+  max-width: 367px;
   transform: translateX(-45%);
   overflow: hidden;
   z-index: 5;
@@ -153,7 +155,7 @@
 .blue-block__wrapper{
   position: relative;
   background-color: #325c95;
-  width: 37rem;
+  //width: 37rem;
   padding: 4rem 3rem 3rem 3rem;
   box-sizing: border-box;
   //z-index: 5;
@@ -177,9 +179,9 @@
 .blue-block__text{
   color: #ffffff;
   @include GothamPro-Light;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 300;
-  line-height: 3.2rem;
+  line-height: 3rem;
 }
 
 .container_main{
@@ -641,6 +643,7 @@
 ========================================================================== */
 
 
+
 //========================================
 //direction
 
@@ -650,7 +653,8 @@
   }
 
   .container__left {
-    max-width: 36rem;
+    //max-width: 42rem;
+    max-width: 45%;
     padding: 0;
     transition: width .3s 0s;
   }
@@ -662,6 +666,20 @@
       padding-right: 0;
     }
   }
+
+  .is-tabs-wrapper{
+    //margin-right: 5rem;
+    width: 80%;
+  }
+
+  .window-direction__content-wrapper{
+    ul, p{
+      //margin-right: 5rem;
+      width: 80%;
+    }
+  }
+
+
 }
 
 .window-direction__image{
@@ -704,7 +722,7 @@
   h2{
     font-size: 4.2rem;
     letter-spacing: -0.1px;
-    max-width: 530px;
+    max-width: 100%
   }
 
   >.title{
