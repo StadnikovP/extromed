@@ -3253,7 +3253,8 @@ body {
     padding-top: 12rem; }
   .window-menu__content .container__right {
     max-height: 680px;
-    padding-bottom: 1rem; }
+    padding-bottom: 1rem;
+    padding-left: 8.7rem; }
 
 .window-menu__content-wrapper {
   display: -webkit-box;
