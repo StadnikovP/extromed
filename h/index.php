@@ -641,13 +641,13 @@ include('./components/header.php');
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique nec arcu sit amet volutpat. Proin fermentum massa a purus sollicitudin, non accumsan justo vehicula. </p>
                                                 <p class="certificates js-certificates">Сертификаты врача</p>
                                                 <div class="certificat-list" style="display: none;">
-                                                    <a class="certificat-item" href="/dist/img/big-certificat.jpg" data-fancybox data-caption="">
+                                                    <a class="certificat-item" href="/dist/img/big-certificat.jpg" data-fancyboxCustom>
                                                         <img src="/dist/img/certificat.jpg" alt="Сертификаты" />
                                                     </a>
-                                                    <a class="certificat-item" href="/dist/img/big-certificat.jpg" data-fancybox data-caption="">
+                                                    <a class="certificat-item" href="/dist/img/big-certificat.jpg" data-fancyboxCustom>
                                                         <img src="/dist/img/certificat.jpg" alt="Сертификаты" />
                                                     </a>
-                                                    <a class="certificat-item" href="/dist/img/big-certificat.jpg" data-fancybox data-caption="">
+                                                    <a class="certificat-item" href="/dist/img/big-certificat.jpg" data-fancyboxCustom>
                                                         <img src="/dist/img/certificat.jpg" alt="Сертификаты" />
                                                     </a>
                                                 </div>

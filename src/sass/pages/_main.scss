@@ -453,7 +453,6 @@
   }
 }
 
-
 .title-section{
 
   color: #353535;
@@ -465,7 +464,6 @@
   margin-top: 12rem;
 }
 
-
 .full-screen__content{
   .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical{
     right: -16px;
@@ -473,6 +471,16 @@
 
   .mCustomScrollbar{
     height: 100%;
+  }
+}
+
+.fancybox-slide{
+  .custom-popUp-image{
+    margin: 44px 10px;
+    img{
+      max-width: 100%;
+      max-height: 100%; 
+    }
   }
 }
 

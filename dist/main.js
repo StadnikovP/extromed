@@ -15374,39 +15374,9 @@ var moduleApp = {
                 nextSpeed: 300,
                 prevSpeed: 300,
                 beforeShow:function(){
-                    // var $thisFancy = $('.fancybox-inner');
-                    //
-                    // var $thisChosen = $thisFancy.find('[data-is="chosen"]');
-                    // moduleApp.chosen($thisChosen);
-                    //
-                    // var $cityTarget = $thisFancy.find('.js-fb-city-target');
-                    //
-                    // $thisFancy.find('.js-fb-city-action').on('change',function(){
-                    //     var action = !!($(this).find('option:selected').attr('data-city'));
-                    //     if (action) {
-                    //         $cityTarget.slideDown(200, function(){
-                    //             if (!$cityTarget.hasClass('state-inited')) {
-                    //                 $cityTarget.addClass('state-inited');
-                    //                 $cityTarget.find('select').chosen({
-                    //                     no_results_text: "Нет результатов"
-                    //                 });
-                    //             }
-                    //         });
-                    //     }
-                    //     else {
-                    //         $cityTarget.slideUp(200);
-                    //     }
-                    // });
-                    //
-                    //
-
-                    //
-                    //
-
                 },
                 afterShow:function(){
-                    var $thisSubmit = $('.fancybox-inner .js-fb-submit');//$thisFancy.find('.js-fb-submit');
-                    // console.log($thisSubmit);
+                    var $thisSubmit = $('.fancybox-inner .js-fb-submit');
                     moduleApp.formValidation($thisSubmit);
 
                 }
@@ -15437,6 +15407,31 @@ var moduleApp = {
                 moduleApp.initSlider(updateSize);
             }, 400);
         });
+
+        var $sertificates = $("[data-fancyboxCustom]");
+
+        $sertificates.on('click', function(e){
+            var $this = $(this),
+                tempalte = '<div class="custom-popUp-image"><img src="' + $this.attr('href') +'"></div>';
+
+            e.preventDefault();
+                $.fancybox.open({
+                    type: 'html',
+                    content: tempalte,
+                    padding: 0,
+                    autoScale: false,
+                    fitToView: false,
+                    openEffect  : 'drop',
+                    closeEffect: 'drop',
+                    nextEffect: 'fade',
+                    prevEffect : 'fade',
+                    openSpeed: 300,
+                    closeSpeed: 300,
+                    nextSpeed: 300,
+                    prevSpeed: 300
+            });
+        });
+
     },
     'resizeGlobal': function(){
         window.addEventListener('resize', resizeInitFunction);
