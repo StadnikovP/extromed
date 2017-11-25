@@ -855,7 +855,7 @@ include('./components/header.php');
                                 <div class="address">улица Чехова, дом 1, корпус 3</div>
                                 <a class="phone" href="tel:84955404001">+7 (495) 540-40-01</a>
                             </div>
-                            <a href="#" class="route-button">Карта</a>
+                            <a href="#" class="route-button">Проложить маршрут</a>
                         </div>
                     </div>
                     <div class="container__right">
