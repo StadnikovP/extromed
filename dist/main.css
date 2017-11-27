@@ -4684,12 +4684,6 @@ body {
     .openMenu .container-menu {
       visibility: visible;
       opacity: 1; }
-  .window-menu__content {
-    overflow-y: scroll;
-    border-top: 66px solid #fff;
-    box-sizing: border-box; }
-    .window-menu__content .container__left {
-      padding-top: 50px; }
   html, body {
     overflow: visible; }
   .site-body {
@@ -4701,14 +4695,20 @@ body {
     height: 100%; }
   .window-menu__content {
     background-color: #325c95;
-    display: block; }
+    display: block;
+    overflow-y: scroll;
+    border-top: 66px solid #fff;
+    box-sizing: border-box; }
     .window-menu__content .menu-list {
       padding-bottom: 35px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+    .window-menu__content .container__left {
+      padding-top: 50px; }
     .window-menu__content .container__right {
       padding-top: 0;
       padding-bottom: 20px;
-      margin-top: 30px; }
+      margin-top: 30px;
+      padding-left: 0; }
   .window-menu__content-wrapper .city, .window-menu__content-wrapper .address, .window-menu__content-wrapper .phone {
     color: #ffffff; }
   .window-menu__content-wrapper .phone {
@@ -4904,7 +4904,10 @@ body {
   .window-contacts__content-wrapper {
     text-align: center; }
     .window-contacts__content-wrapper h2, .window-contacts__content-wrapper .contact-wrapper {
-      text-align: left; } }
+      text-align: left; }
+  .fancybox-slide .custom-popUp-image {
+    max-height: 90%;
+    height: auto; } }
 
 /* ==========================================================================
                 END MOBILE STYLES

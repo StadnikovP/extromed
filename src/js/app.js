@@ -3,54 +3,7 @@ var $window, $document, $html;
 
 var pageApp = {
     'init': function(){
-        var $thisApp = $('#app');
-        var curApp = $thisApp.attr('data-app');
         this.globalPollifil();
-        if (pageApp[curApp]) { pageApp[curApp]($thisApp); }
-    },
-    'page-address':function($thisApp){
-        var $mapPlace = $thisApp.find('[data-target="ymap"]');
-        ymaps.ready(function() {
-
-            var mapLat = 55.751244;
-            var mapLng = 37.618423;
-            var mapZoom = 16;
-
-            var map = new ymaps.Map($mapPlace[0], {
-                center: [mapLat, mapLng],
-                zoom: mapZoom,
-                type: 'yandex#publicMap',
-                controls: [],
-                behaviors: ['drag', 'dblClickZoom']
-            });
-
-
-            map.controls.add(
-                new ymaps.control.ZoomControl(),
-                {
-                    float: "none",
-                    position: {
-                        top: 30,
-                        right: 30
-                    }
-                }
-            );
-
-            var marker = new ymaps.Placemark(map.getCenter(), {
-
-            }, {
-                iconLayout: 'default#image',
-                iconImageHref: '/assets/img/map-pin.png',
-                iconImageSize: [50,64],
-                hideIconOnBalloonOpen: false
-            });
-
-
-
-            map.geoObjects.add(marker);
-
-
-        });
     },
     'globalPollifil': function(){
         if (!('classList' in document.documentElement) && Object.defineProperty && typeof HTMLElement !== 'undefined') {
@@ -132,35 +85,14 @@ var moduleApp = {
     'init': function () {
         this.resizeGlobal();
         this.resizeLogo();
-        this.executeModules();
-        this.executeSFX();
         this.globalActions();
-        this.toolsGlobalSubscribe();
-        this.pageLoader();
         this.startupMessage();
         this.initSlider();
         this.pagePilingInit();
         this.formValidation();
         this.mobileMenu();
-
-    },
-    'executeModules':function(){
-        $('[data-is]').each(function(i,thisModule){
-            var $thisModule = $(thisModule);
-            var thisModuleName = $thisModule.attr('data-is');
-            if(moduleApp[thisModuleName]) { moduleApp[thisModuleName]($thisModule); }
-        });
-    },
-    'executeSFX':function(){
-        if (appConfig.mobileVersion || device.tablet()) { return false; }
-        $('[data-sfx]').each(function(i,thisModule){
-            var $thisModule = $(thisModule);
-            var thisModuleName = $thisModule.attr('data-sfx');
-            if(moduleApp.SFXModules[thisModuleName]) { moduleApp.SFXModules[thisModuleName]($thisModule); }
-        });
     },
     'globalActions':function(){
-
         //tabs
         $('.js-tabs-controls').on('click', function(e){
             e.preventDefault();
@@ -217,6 +149,7 @@ var moduleApp = {
 
         //init menu section
         $('#myMenu .menu-link').on('click', function(){
+            console.log('click2');
             $('body').toggleClass('openMenu');
             $('.js-m-btn-menu').toggleClass('active');
         });
@@ -298,6 +231,8 @@ var moduleApp = {
             });
         });
 
+
+
     },
     'resizeGlobal': function(){
         window.addEventListener('resize', resizeInitFunction);
@@ -325,6 +260,7 @@ var moduleApp = {
         }
     },
     'pagePilingInit': function(){
+
         var $listSection = $('.main section');
         var configTime = {
                 delay: 1550,
@@ -354,12 +290,15 @@ var moduleApp = {
         }
 
         //button menu
+        $('.js-m-btn-menu').off('click');
+
         $('.js-m-btn-menu').on('click', function(e){
             e.preventDefault();
 
             var $this = $(this);
 
             if(appConfig.desktopVersion){
+
                 if($this.hasClass('active')){
                     hideRouter('menu');
                     showRouter(GlobalStatePage);
@@ -369,7 +308,6 @@ var moduleApp = {
                     showRouter('menu');
                 }
             }
-
 
             $this.toggleClass('active');
             $('body').toggleClass('openMenu');
@@ -821,63 +759,6 @@ var moduleApp = {
 
 
     },
-    'toolsGlobalSubscribe':function($thisModule){
-        $document.on('click','.ts-submit',function(e){
-            e.preventDefault();
-            var $this = $(this);
-            var $parent =  $this.closest('.is-tools-subscribe');
-            var $thisInput = $parent.find('.ts-input');
-            var regexEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-
-
-            if (regexEmail.test($thisInput.val()) && $thisInput.val().length > 0) {
-                $parent.find('.ts-form').submit();
-            } else {
-                $thisInput.addClass('state-bounce');
-                setTimeout(function(){
-                    $thisInput.removeClass('state-bounce').focus();
-                }, 400);
-            }
-
-        });
-    },
-    'pageLoader': function(){
-        $document.on('click','a',function(){
-            var $this = $(this);
-            var noProgress = false;
-
-            var href = $this.attr('href');
-            var targetBlank = $this.attr('target') || false;
-            var inSwiper = $this.closest('.swiper-container').length;
-            var downloadAttr = $this.attr('download');
-            if (typeof downloadAttr !== typeof undefined && downloadAttr !== false) {
-                noProgress = true;
-            }
-
-            if (
-                !href ||
-                href.indexOf('mailto') > -1 ||
-                href.indexOf('#') > -1 ||
-                href.indexOf('javascript') > -1 ||
-                href.indexOf('tel') > -1 ||
-                $this.hasClass('no-preloader') ||
-                $this.hasClass('js-fancy-image') ||
-                href.length === 0 ||
-                href === 'undefined' ||
-                targetBlank ||
-                inSwiper
-            ) { noProgress = true; }
-
-            if (noProgress) {
-                return true;
-            } else {
-                $("#body").removeClass('jsfx-loaded');
-                return true;
-            }
-        });
-
-        $("#body").addClass('jsfx-loaded');
-    },
     'startupMessage':function(){
         if (appConfig.startupMessage.title && appConfig.startupMessage.message) {
             var template = '<div class="fb-modal-default">';
@@ -903,90 +784,7 @@ var moduleApp = {
             });
         }
     },
-    'SFXModules':{
-        'sfx-a':function($thisModule){
-            var gfxFromLeft = {
-                'data-when':'enter',
-                'data-from':'.8',
-                'data-to':'0',
-                'data-translatex':'-40'
-            };
-
-            var gfxFromRight = {
-                'data-when':'enter',
-                'data-from':'.8',
-                'data-to':'0',
-                'data-translatex':'40'
-            };
-
-            $thisModule.find('.lt-column-left .lt-tile').addClass('scrollme animateme').attr(gfxFromLeft);
-            $thisModule.find('.lt-column-right .lt-tile').addClass('scrollme animateme').attr(gfxFromRight);
-        },
-        'sfx-b':function($thisModule){
-            var gfxFromLeft = {
-                'data-when':'enter',
-                'data-from':'.8',
-                'data-to':'0',
-                'data-translatex':'-40'
-            };
-
-            var gfxFormRight = {
-                'data-when':'enter',
-                'data-from':'.8',
-                'data-to':'0',
-                'data-translatex':'40'
-            };
-
-            $thisModule.find('.lt-row:even').find('.lt-row-content-inner').addClass('scrollme animateme').attr(gfxFromLeft);
-            $thisModule.find('.lt-row:even').find('.lt-row-image').addClass('scrollme animateme').attr(gfxFormRight);
-            $thisModule.find('.lt-row:odd').find('.lt-row-content-inner').addClass('scrollme animateme').attr(gfxFormRight);
-            $thisModule.find('.lt-row:odd').find('.lt-row-image').addClass('scrollme animateme').attr(gfxFromLeft);
-        },
-        'sfx-c':function($thisModule){
-            var gfxFromRight = {
-                'data-when':'enter',
-                'data-from':'.8',
-                'data-to':'0',
-                'data-translatex':'40'
-            };
-
-            $thisModule.addClass('scrollme animateme').attr(gfxFromRight);
-        },
-        'sfx-d':function($thisModule){
-            return false;
-            var gfxFromLeft = {
-                'data-when':'enter',
-                'data-from':'.8',
-                'data-to':'0',
-                'data-translatex':'-40'
-            };
-
-            var gfxFormRight = {
-                'data-when':'enter',
-                'data-from':'.8',
-                'data-to':'0',
-                'data-translatex':'40'
-            };
-
-            $thisModule.find('.lt-row:even').find('.lt-row-content-inner').addClass('scrollme animateme').attr(gfxFromLeft);
-            $thisModule.find('.lt-row:even').find('.lt-row-image').addClass('scrollme animateme').attr(gfxFormRight);
-            $thisModule.find('.lt-row:odd').find('.lt-row-content-inner').addClass('scrollme animateme').attr(gfxFormRight);
-            $thisModule.find('.lt-row:odd').find('.lt-row-image').addClass('scrollme animateme').attr(gfxFromLeft);
-        },
-        'sfx-e':function($thisModule){
-
-            var gfxFromLeft = {
-                'data-when':'enter',
-                'data-from':'.8',
-                'data-to':'0',
-                'data-opacity':'0'
-            };
-            $thisModule.find('.hc-year-box').addClass('scrollme animateme').attr(gfxFromLeft);
-        }
-    },
     'formValidation': function ($submitBtn, submitFunction) {
-        console.log($submitBtn);
-
         var params = {
             'formValidationAttr':'data-validation',
             'formInputClass':'is-form-text',
@@ -1438,5 +1236,3 @@ function initMap() {
         icon: markerIcon,
     });
 }
-
-

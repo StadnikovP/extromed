@@ -25,7 +25,6 @@
                 } else {
                     document.getElementById(vp).setAttribute('content','width='+d);
                 }
-                console.log('mobile= ' + appConfig.mobileVersion);
                 appConfig.desktopVersion = !appConfig.mobileVersion;
             })(737,940,'viewport');
         </script>
@@ -60,7 +59,7 @@
                 <div class="wrapper ">
                     <header class="header">
                         <div class="header-left-container">
-                            <div class="mobile-btn-menu js-m-btn-menu"><span>menu</span></div>
+                            <a href="#" class="mobile-btn-menu js-m-btn-menu"><span>menu</span></a>
                             <div class="address">г. Пушкино, ул. Чехова д. 1 корп. 3<br><a href="tel:84955404001">+7 (495) 540-40-01</a></div>
                         </div>
 

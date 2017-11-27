@@ -128,12 +128,13 @@
       // $(this).css('z-index',50);
 
       //webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd
-      $(this).one('transitionend', function(e) {
+      $(this).one('transitionend webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd', function(e) {
         if (typeof settings.afterMove == 'function') settings.afterMove(index);
       });
     }
 
     $.fn.moveDown = function() {
+        console.log('moveDown');
       var el = $(this)
       index = $(settings.sectionContainer +".active").data("index");
       current = $(settings.sectionContainer + "[data-index='" + index + "']");
@@ -170,6 +171,7 @@
     }
 
     $.fn.moveUp = function() {
+        console.log('moveUp');
       var el = $(this)
       index = $(settings.sectionContainer +".active").data("index");
       current = $(settings.sectionContainer + "[data-index='" + index + "']");
@@ -336,6 +338,7 @@
 
 
     function init_scroll(event, delta) {
+
         deltaOfInterest = delta;
         var timeNow = new Date().getTime();
         // Cancel scroll if currently animating or within quiet period
@@ -343,6 +346,8 @@
             event.preventDefault();
             return;
         }
+
+        console.log('deltaOfInterest= '+deltaOfInterest);
 
         if (deltaOfInterest < 0) {
           el.moveDown()
@@ -435,8 +440,9 @@
 
     startUrl();
 
-    $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
+    $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll wheel', function(event) {
       event.preventDefault();
+        console.log('wheelDelta= '+ event.originalEvent.deltaY+' detail= '+event.originalEvent.detail);
       var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
       if(!$("body").hasClass("disabled-onepage-scroll")) init_scroll(event, delta);
     });
