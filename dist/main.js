@@ -12215,6 +12215,10 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     direction : 'vertical'
   };
 
+  if($('html').hasClass('ie-js')){
+      defaults.responsiveFallback = false;
+  }
+
   /*------------------------------------------------*/
   /*  Credit: Eike Send for the awesome swipe event */
   /*------------------------------------------------*/
@@ -12407,26 +12411,26 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       }
     }
 
-      $.fn.customMoveTo = function(page_index) {
-          current = $(settings.sectionContainer + ".active")
-          next = $(settings.sectionContainer + "[data-index='" + (page_index) + "']");
-          if(next.length > 0) {
-              if (typeof settings.clickMove == 'function') settings.clickMove(next.data("index"));
-              current.removeClass("active");
-              next.addClass("active");
-              $(".onepage-pagination li a" + ".active").removeClass("active");
-              $(".onepage-pagination li a" + "[data-index='" + (page_index) + "']").addClass("active");
-              $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
-              $("body").addClass("viewing-page-"+next.data("index"));
+    $.fn.customMoveTo = function(page_index) {
+        current = $(settings.sectionContainer + ".active")
+        next = $(settings.sectionContainer + "[data-index='" + (page_index) + "']");
+        if(next.length > 0) {
+            if (typeof settings.clickMove == 'function') settings.clickMove(next.data("index"));
+            current.removeClass("active");
+            next.addClass("active");
+            $(".onepage-pagination li a" + ".active").removeClass("active");
+            $(".onepage-pagination li a" + "[data-index='" + (page_index) + "']").addClass("active");
+            $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
+            $("body").addClass("viewing-page-"+next.data("index"));
 
-              pos = ((page_index - 1) * 100) * -1;
+            pos = ((page_index - 1) * 100) * -1;
 
-              if (history.replaceState && settings.updateURL == true) {
-                  updateUrl(page_index);
-              }
-              el.transformPage(settings, pos, page_index);
-          }
-      }
+            if (history.replaceState && settings.updateURL == true) {
+                updateUrl(page_index);
+            }
+            el.transformPage(settings, pos, page_index);
+        }
+    }
 
     function updateUrl(page_index) {
       var url = $('.menu-list').find('a' + "[data-index='" + (page_index) + "']").attr('href');
@@ -12526,7 +12530,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
             return;
         }
 
-        console.log('deltaOfInterest= '+deltaOfInterest);
+        // console.log('deltaOfInterest= '+deltaOfInterest);
 
         if (deltaOfInterest < 0) {
           el.moveDown()
@@ -12620,10 +12624,13 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     startUrl();
 
     $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll wheel', function(event) {
-      event.preventDefault();
-        console.log('wheelDelta= '+ event.originalEvent.deltaY+' detail= '+event.originalEvent.detail);
-      var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
-      if(!$("body").hasClass("disabled-onepage-scroll")) init_scroll(event, delta);
+      if(!$('html').hasClass('ie-js')) {
+          console.log('wheelDelt');
+        event.preventDefault();
+        // console.log('wheelDelta= ' + event.originalEvent.deltaY + ' detail= ' + event.originalEvent.detail);
+        var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
+        if (!$("body").hasClass("disabled-onepage-scroll")) init_scroll(event, delta);
+      }
     });
 
 
@@ -15144,6 +15151,7 @@ var $window, $document, $html;
 var pageApp = {
     'init': function(){
         this.globalPollifil();
+        this.determineIE();
     },
     'globalPollifil': function(){
         if (!('classList' in document.documentElement) && Object.defineProperty && typeof HTMLElement !== 'undefined') {
@@ -15219,6 +15227,33 @@ var pageApp = {
                 };
         }());
     },
+    'determineIE': function(){
+
+
+        function getInternetExplorerVersion()
+        {
+            var rv = -1;
+            if (navigator.appName == 'Microsoft Internet Explorer')
+            {
+                var ua = navigator.userAgent;
+                var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+                if (re.exec(ua) != null)
+                    rv = parseFloat( RegExp.$1 );
+            }
+            else if (navigator.appName == 'Netscape')
+            {
+                var ua = navigator.userAgent;
+                var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+                if (re.exec(ua) != null)
+                    rv = parseFloat( RegExp.$1 );
+            }
+            return rv;
+        }
+
+        if(getInternetExplorerVersion()!==-1){
+            $('html').addClass('ie-js ie-stile');
+        }
+    }
 };
 
 var moduleApp = {
@@ -15403,12 +15438,14 @@ var moduleApp = {
 
         var $listSection = $('.main section');
         var configTime = {
-                delay: 1550,
-                animationTime: 500,
-                delayNextPage: 1550
-            };
+            delay: 1550,
+            animationTime: 500,
+            delayNextPage: 1550,
+        };
         var GlobalStatePage = 1;
         var sequenceTimeline = new TimelineLite();
+
+
 
         if(history.replaceState){
             var hash = window.location.hash;

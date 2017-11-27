@@ -1,3 +1,36 @@
 /* ==========================================================================
                 IE STYLES
    ========================================================================== */
+.ie-stile{
+  overflow: auto;
+
+  body{
+    overflow: auto;
+  }
+
+  .site-body{
+    height: auto;
+    overflow: auto;
+  }
+
+  .main{
+    height: auto;
+  }
+
+  .onepage-wrapper{
+    .section{
+      position: relative;
+      height: 100vh;
+      padding-top: 0;
+
+      &.page1{
+        padding-top: 84px;
+      }
+    }
+  }
+
+  .white-list{
+    display: none;
+  }
+
+}

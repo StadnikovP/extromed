@@ -4,6 +4,7 @@ var $window, $document, $html;
 var pageApp = {
     'init': function(){
         this.globalPollifil();
+        this.determineIE();
     },
     'globalPollifil': function(){
         if (!('classList' in document.documentElement) && Object.defineProperty && typeof HTMLElement !== 'undefined') {
@@ -79,6 +80,33 @@ var pageApp = {
                 };
         }());
     },
+    'determineIE': function(){
+
+
+        function getInternetExplorerVersion()
+        {
+            var rv = -1;
+            if (navigator.appName == 'Microsoft Internet Explorer')
+            {
+                var ua = navigator.userAgent;
+                var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+                if (re.exec(ua) != null)
+                    rv = parseFloat( RegExp.$1 );
+            }
+            else if (navigator.appName == 'Netscape')
+            {
+                var ua = navigator.userAgent;
+                var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+                if (re.exec(ua) != null)
+                    rv = parseFloat( RegExp.$1 );
+            }
+            return rv;
+        }
+
+        if(getInternetExplorerVersion()!==-1){
+            $('html').addClass('ie-js ie-stile');
+        }
+    }
 };
 
 var moduleApp = {
@@ -263,12 +291,14 @@ var moduleApp = {
 
         var $listSection = $('.main section');
         var configTime = {
-                delay: 1550,
-                animationTime: 500,
-                delayNextPage: 1550
-            };
+            delay: 1550,
+            animationTime: 500,
+            delayNextPage: 1550,
+        };
         var GlobalStatePage = 1;
         var sequenceTimeline = new TimelineLite();
+
+
 
         if(history.replaceState){
             var hash = window.location.hash;

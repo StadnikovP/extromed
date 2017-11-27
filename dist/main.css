@@ -100,6 +100,27 @@ input, select {
   font-weight: normal;
   font-style: normal; }
 
+/* ==========================================================================
+                IE STYLES
+   ========================================================================== */
+.ie-stile {
+  overflow: auto; }
+  .ie-stile body {
+    overflow: auto; }
+  .ie-stile .site-body {
+    height: auto;
+    overflow: auto; }
+  .ie-stile .main {
+    height: auto; }
+  .ie-stile .onepage-wrapper .section {
+    position: relative;
+    height: 100vh;
+    padding-top: 0; }
+    .ie-stile .onepage-wrapper .section.page1 {
+      padding-top: 84px; }
+  .ie-stile .white-list {
+    display: none; }
+
 /**
  * Swiper 4.0.3
  * Most modern mobile touch slider and framework with hardware accelerated transitions
