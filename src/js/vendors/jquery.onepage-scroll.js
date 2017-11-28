@@ -40,6 +40,8 @@
       defaults.responsiveFallback = false;
   }
 
+  console.log(defaults.responsiveFallback);
+
   /*------------------------------------------------*/
   /*  Credit: Eike Send for the awesome swipe event */
   /*------------------------------------------------*/

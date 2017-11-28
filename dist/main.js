@@ -12219,6 +12219,8 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       defaults.responsiveFallback = false;
   }
 
+  console.log(defaults.responsiveFallback);
+
   /*------------------------------------------------*/
   /*  Credit: Eike Send for the awesome swipe event */
   /*------------------------------------------------*/
@@ -12625,7 +12627,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 
     $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll wheel', function(event) {
       if(!$('html').hasClass('ie-js')) {
-          console.log('wheelDelt');
         event.preventDefault();
         // console.log('wheelDelta= ' + event.originalEvent.deltaY + ' detail= ' + event.originalEvent.detail);
         var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
@@ -15228,32 +15229,32 @@ var pageApp = {
         }());
     },
     'determineIE': function(){
+        // function getInternetExplorerVersion(){
+        //     var rv = -1;
+        //     if (navigator.appName == 'Microsoft Internet Explorer')
+        //     {
+        //         var ua = navigator.userAgent;
+        //         var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+        //         if (re.exec(ua) != null)
+        //             rv = parseFloat( RegExp.$1 );
+        //     }
+        //     else if (navigator.appName == 'Netscape')
+        //     {
+        //         var ua = navigator.userAgent;
+        //         var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+        //         if (re.exec(ua) != null)
+        //             rv = parseFloat( RegExp.$1 );
+        //     }
+        //     return rv;
+        // }
+        //
+        // if(getInternetExplorerVersion()!==-1){
+        //     $('html').addClass('ie-js ie-stile');
+        // }
+        // $('html').addClass('ie-js ie-stile');
 
-
-        function getInternetExplorerVersion()
-        {
-            var rv = -1;
-            if (navigator.appName == 'Microsoft Internet Explorer')
-            {
-                var ua = navigator.userAgent;
-                var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
-                if (re.exec(ua) != null)
-                    rv = parseFloat( RegExp.$1 );
-            }
-            else if (navigator.appName == 'Netscape')
-            {
-                var ua = navigator.userAgent;
-                var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
-                if (re.exec(ua) != null)
-                    rv = parseFloat( RegExp.$1 );
-            }
-            return rv;
-        }
-
-        if(getInternetExplorerVersion()!==-1){
-            $('html').addClass('ie-js ie-stile');
-        }
     }
+
 };
 
 var moduleApp = {
