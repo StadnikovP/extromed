@@ -12555,13 +12555,15 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       }
     });
 
-    el.swipeEvents().bind("swipeDown",  function(event){
-      if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
-      el.moveUp();
-    }).bind("swipeUp", function(event){
-      if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
-      el.moveDown();
-    });
+    if(!$('html').hasClass('ie-js')) {
+        el.swipeEvents().bind("swipeDown", function (event) {
+            if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+            el.moveUp();
+        }).bind("swipeUp", function (event) {
+            if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+            el.moveDown();
+        });
+    }
 
     // Create Pagination and Display Them
     if (settings.pagination == true) {
@@ -12626,8 +12628,9 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     startUrl();
 
     $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll wheel', function(event) {
+      console.log('scroll');
       if(!$('html').hasClass('ie-js')) {
-        console.log('scroll');
+        console.log('scroll2');
         event.preventDefault();
         // console.log('wheelDelta= ' + event.originalEvent.deltaY + ' detail= ' + event.originalEvent.detail);
         var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
@@ -15230,7 +15233,7 @@ var pageApp = {
         }());
     },
     'determineIE': function(){
-
+        
         // function getInternetExplorerVersion(){
         //     var rv = -1;
         //     if (navigator.appName == 'Microsoft Internet Explorer')
