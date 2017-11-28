@@ -49,9 +49,11 @@
 
             if(getInternetExplorerVersion()!==-1){
                 document.getElementById("html").classList.add("ie-js", "ie-stile");
-                document.getElementById("body").classList.add("disabled-onepage-scroll")
+                document.getElementById("body").classList.add("disabled-onepage-scroll");
 //                $('html').addClass('ie-js ie-stile');
             }
+//            document.getElementById("html").classList.add("ie-js", "ie-stile");
+//            document.getElementById("body").classList.add("disabled-onepage-scroll");
 //            document.getElementById("html").classList.add("ie-js", "ie-stile");
 //            $('html').addClass('ie-js ie-stile');
         </script>

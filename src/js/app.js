@@ -81,6 +81,7 @@ var pageApp = {
         }());
     },
     'determineIE': function(){
+
         // function getInternetExplorerVersion(){
         //     var rv = -1;
         //     if (navigator.appName == 'Microsoft Internet Explorer')
@@ -105,6 +106,8 @@ var pageApp = {
         // }
         // $('html').addClass('ie-js ie-stile');
 
+
+
     }
 
 };
@@ -116,9 +119,10 @@ var moduleApp = {
         this.globalActions();
         this.startupMessage();
         this.initSlider();
-        this.pagePilingInit();
+        // this.pagePilingInit();
         this.formValidation();
         this.mobileMenu();
+        this.initPlugiScroll();
     },
     'globalActions':function(){
         //tabs
@@ -285,6 +289,11 @@ var moduleApp = {
         }
         else{
             $('.logo svg').attr('viewBox', '0 0 248 44');
+        }
+    },
+    'initPlugiScroll': function(){
+        if(!$('html').hasClass('ie-js')) {
+            moduleApp.pagePilingInit()
         }
     },
     'pagePilingInit': function(){

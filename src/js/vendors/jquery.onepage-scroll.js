@@ -33,14 +33,11 @@
     clickMove: null,
     loop: true,
     responsiveFallback: false,
-    direction : 'vertical'
+    direction : 'vertical',
+    ie: false
   };
 
-  if($('html').hasClass('ie-js')){
-      defaults.responsiveFallback = false;
-  }
 
-  console.log(defaults.responsiveFallback);
 
   /*------------------------------------------------*/
   /*  Credit: Eike Send for the awesome swipe event */
@@ -295,6 +292,7 @@
     }
 
     function responsive() {
+      console.log('responsive');
       //start modification
       var valForTest = false;
       var typeOfRF = typeof settings.responsiveFallback
@@ -303,6 +301,7 @@
         valForTest = $(window).width() < settings.responsiveFallback;
       }
       if(typeOfRF == "boolean"){
+        console.log('typeOfRF'+settings.responsiveFallback);
         valForTest = settings.responsiveFallback;
       }
       if(typeOfRF == "function"){
@@ -312,6 +311,10 @@
         if(typeOFv == "number"){
           valForTest = $(window).width() < valFunction;
         }
+      }
+
+      if(settings.ie == true){
+          valForTest = true;
       }
 
       //end modification
@@ -341,6 +344,8 @@
         });
       }
     }
+
+
 
 
     function init_scroll(event, delta) {
@@ -459,6 +464,10 @@
       // }
     });
 
+    if($('html').hasClass('ie-js')) {
+        settings.responsiveFallback = true;
+        settings.ie = true;
+    }
 
     if(settings.responsiveFallback != false) {
       $(window).resize(function() {
@@ -467,6 +476,8 @@
 
       responsive();
     }
+
+
 
     if(settings.keyboard == true) {
       $(document).keydown(function(e) {
@@ -501,8 +512,15 @@
 
       });
     }
+
+
     return false;
   }
 
-
+    // if($('html').hasClass('ie-js')){
+    //     settings.responsiveFallback
+    //     console.log('unbind');
+    //     $(document).unbind('mousewheel DOMMouseScroll MozMousePixelScroll');
+    //     el.swipeEvents().unbind("swipeDown swipeUp");
+    // }
 }(window.jQuery);

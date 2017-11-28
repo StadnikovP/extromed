@@ -12212,14 +12212,11 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     clickMove: null,
     loop: true,
     responsiveFallback: false,
-    direction : 'vertical'
+    direction : 'vertical',
+    ie: false
   };
 
-  if($('html').hasClass('ie-js')){
-      defaults.responsiveFallback = false;
-  }
 
-  console.log(defaults.responsiveFallback);
 
   /*------------------------------------------------*/
   /*  Credit: Eike Send for the awesome swipe event */
@@ -12474,6 +12471,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     }
 
     function responsive() {
+      console.log('responsive');
       //start modification
       var valForTest = false;
       var typeOfRF = typeof settings.responsiveFallback
@@ -12482,6 +12480,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         valForTest = $(window).width() < settings.responsiveFallback;
       }
       if(typeOfRF == "boolean"){
+        console.log('typeOfRF'+settings.responsiveFallback);
         valForTest = settings.responsiveFallback;
       }
       if(typeOfRF == "function"){
@@ -12491,6 +12490,10 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         if(typeOFv == "number"){
           valForTest = $(window).width() < valFunction;
         }
+      }
+
+      if(settings.ie == true){
+          valForTest = true;
       }
 
       //end modification
@@ -12520,6 +12523,8 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         });
       }
     }
+
+
 
 
     function init_scroll(event, delta) {
@@ -12638,6 +12643,10 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       // }
     });
 
+    if($('html').hasClass('ie-js')) {
+        settings.responsiveFallback = true;
+        settings.ie = true;
+    }
 
     if(settings.responsiveFallback != false) {
       $(window).resize(function() {
@@ -12646,6 +12655,8 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 
       responsive();
     }
+
+
 
     if(settings.keyboard == true) {
       $(document).keydown(function(e) {
@@ -12680,10 +12691,17 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 
       });
     }
+
+
     return false;
   }
 
-
+    // if($('html').hasClass('ie-js')){
+    //     settings.responsiveFallback
+    //     console.log('unbind');
+    //     $(document).unbind('mousewheel DOMMouseScroll MozMousePixelScroll');
+    //     el.swipeEvents().unbind("swipeDown swipeUp");
+    // }
 }(window.jQuery);
 /*
 	Masked Input plugin for jQuery
@@ -15233,6 +15251,7 @@ var pageApp = {
         }());
     },
     'determineIE': function(){
+
         // function getInternetExplorerVersion(){
         //     var rv = -1;
         //     if (navigator.appName == 'Microsoft Internet Explorer')
@@ -15257,6 +15276,8 @@ var pageApp = {
         // }
         // $('html').addClass('ie-js ie-stile');
 
+
+
     }
 
 };
@@ -15268,9 +15289,10 @@ var moduleApp = {
         this.globalActions();
         this.startupMessage();
         this.initSlider();
-        this.pagePilingInit();
+        // this.pagePilingInit();
         this.formValidation();
         this.mobileMenu();
+        this.initPlugiScroll();
     },
     'globalActions':function(){
         //tabs
@@ -15437,6 +15459,11 @@ var moduleApp = {
         }
         else{
             $('.logo svg').attr('viewBox', '0 0 248 44');
+        }
+    },
+    'initPlugiScroll': function(){
+        if(!$('html').hasClass('ie-js')) {
+            moduleApp.pagePilingInit()
         }
     },
     'pagePilingInit': function(){

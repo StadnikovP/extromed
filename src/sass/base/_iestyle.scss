@@ -17,6 +17,16 @@
     height: auto;
   }
 
+  .section{
+    position: relative;
+    height: 100vh;
+    padding-top: 0;
+
+    &.page1{
+      padding-top: 84px;
+    }
+  }
+
   .onepage-wrapper{
     .section{
       position: relative;
