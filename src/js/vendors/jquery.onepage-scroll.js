@@ -448,6 +448,7 @@
 
     $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll wheel', function(event) {
       if(!$('html').hasClass('ie-js')) {
+        console.log('scroll');
         event.preventDefault();
         // console.log('wheelDelta= ' + event.originalEvent.deltaY + ' detail= ' + event.originalEvent.detail);
         var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
