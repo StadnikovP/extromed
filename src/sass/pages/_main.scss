@@ -668,6 +668,10 @@
       max-width: 100%;
       padding-right: 0;
     }
+
+    .is-tabs-wrapper {
+      width: 100%;
+    }
   }
 
   .is-tabs-wrapper{
@@ -816,9 +820,17 @@
     font-size: 2rem;
     font-weight: 300;
     line-height: 2.6rem;
-    background-color: #ffffff;
+    //background-color: #ffffff;
     padding-right: 6px;
+    align-items: flex-start;
+    width: 100%;
+
+    span{
+      background: #ffffff;
+      padding-bottom: 2px;
+    }
   }
+
 
   .price{
     position: relative;
@@ -913,6 +925,15 @@
     font-weight: 300;
     line-height: 3.2rem;
     margin-bottom: 3.7rem;
+  }
+
+  .title-experts{
+    color: #353535;
+    @include GothamPro-reg;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 3.2rem;
+    margin-bottom: 1rem;
   }
 
   .certificates{

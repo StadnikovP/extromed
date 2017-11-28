@@ -196,51 +196,51 @@ include('./components/header.php');
                                             <div class="content">
                                                 <div class="price-list">
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Первичный прием врача-отоларинголога</div>
+                                                        <div class="name"><span>Первичный прием врача-отоларинголога</span></div>
                                                         <div class="price">1050</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Повторный прием врача-отоларинголога</div>
+                                                        <div class="name"><span>Повторный прием врача-отоларинголога</span></div>
                                                         <div class="price">950</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Продувание евстахиевой трубы по Политцеру</div>
+                                                        <div class="name"><span>Продувание евстахиевой трубы по Политцеру</span></div>
                                                         <div class="price">550</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Удаление серной пробки (одно ухо)</div>
+                                                        <div class="name"><span>Удаление серной пробки (одно ухо)</span></div>
                                                         <div class="price">550</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Промывание миндалин ручное лекарственными средствами (со стоимостью медикаментов)</div>
+                                                        <div class="name"><span>Промывание миндалин ручное лекарственными средствами (со стоимостью медикаментов)</span></div>
                                                         <div class="price">570</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Промывание миндалин аппаратное лекарственными средствами (со стоимостью медикаментов)</div>
+                                                        <div class="name"><span>Промывание миндалин аппаратное лекарственными средствами (со стоимостью медикаментов)</span></div>
                                                         <div class="price">900</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Эндоскопическое исследование ЛОР-органов (жестким эндоскопом)</div>
+                                                        <div class="name"><span>Эндоскопическое исследование ЛОР-органов (жестким эндоскопом)</span></div>
                                                         <div class="price">880</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Эндоскопическое исследование ЛОР-органов (гибким эндоскопом)</div>
+                                                        <div class="name"><span>Эндоскопическое исследование ЛОР-органов (гибким эндоскопом)</span></div>
                                                         <div class="price">1450</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Удаление инородного тела из носа, ротоглотки и наружного слухового прохода 1-й категории сложности</div>
+                                                        <div class="name"><span>Удаление инородного тела из носа, ротоглотки и наружного слухового прохода 1-й категории сложности</span></div>
                                                         <div class="price">950</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Промывание носа  методом перемещения по проетцу (кукушка)</div>
+                                                        <div class="name"><span>Промывание носа  методом перемещения по проетцу (кукушка)</span></div>
                                                         <div class="price">570</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Отоакуалистическая эмиссия у младенцев</div>
+                                                        <div class="name"><span>Отоакуалистическая эмиссия у младенцев</span></div>
                                                         <div class="price">1500</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Тимпанометрия</div>
+                                                        <div class="name"><span>Тимпанометрия</span></div>
                                                         <div class="price">800</div>
                                                     </div>
                                                 </div>
@@ -334,15 +334,15 @@ include('./components/header.php');
                                             <div class="content">
                                                 <div class="price-list">
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Консультация врача-анестезиолога</div>
+                                                        <div class="name"><span>Консультация врача-анестезиолога</span></div>
                                                         <div class="price">1000</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Наркоз ингаляционным анестетиком Севоран (за первые 30 минут)</div>
+                                                        <div class="name"><span>Наркоз ингаляционным анестетиком Севоран (за первые 30 минут)</span></div>
                                                         <div class="price">6500</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Наркоз ингаляционным анестетиком Севоран (за последующие 30 минут*)</div>
+                                                        <div class="name"><span>Наркоз ингаляционным анестетиком Севоран (за последующие 30 минут*)</span></div>
                                                         <div class="price">3500</div>
                                                     </div>
                                                 </div>
@@ -450,15 +450,15 @@ include('./components/header.php');
                                             <div class="content">
                                                 <div class="price-list">
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Консультация врача-анестезиолога</div>
+                                                        <div class="name"><span>Консультация врача-анестезиолога</span></div>
                                                         <div class="price">1000</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Наркоз ингаляционным анестетиком Севоран (за первые 30 минут)</div>
+                                                        <div class="name"><span>Наркоз ингаляционным анестетиком Севоран (за первые 30 минут)</span></div>
                                                         <div class="price">6500</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Наркоз ингаляционным анестетиком Севоран (за последующие 30 минут*)</div>
+                                                        <div class="name"><span>Наркоз ингаляционным анестетиком Севоран (за последующие 30 минут*)</span></div>
                                                         <div class="price">3500</div>
                                                     </div>
                                                 </div>
@@ -541,11 +541,11 @@ include('./components/header.php');
                                             <div class="content">
                                                 <div class="price-list">
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Первичный прием врача- педиатра</div>
+                                                        <div class="name"><span>Первичный прием врача- педиатра</span></div>
                                                         <div class="price">900</div>
                                                     </div>
                                                     <div class="item-element js-item-element">
-                                                        <div class="name">Повторный прием врача-педиатра</div>
+                                                        <div class="name"><span>Повторный прием врача-педиатра</span></div>
                                                         <div class="price">750</div>
                                                     </div>
                                                 </div>
@@ -608,7 +608,7 @@ include('./components/header.php');
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" style="background-image: url('/dist/img/expert-1.jpg');"></div>
                         <div class="swiper-slide" style="background-image: url('/dist/img/expert-2.jpg');"></div>
-                        <div class="swiper-slide" style="background-image: url('/dist/img/expert-3.jpg');"></div>
+<!--                        <div class="swiper-slide" style="background-image: url('/dist/img/expert-3.jpg');"></div>-->
                         <div class="swiper-slide" style="background-image: url('/dist/img/expert-4.jpg');"></div>
                         <div class="swiper-slide" style="background-image: url('/dist/img/expert-5.jpg');"></div>
                     </div>
@@ -634,63 +634,124 @@ include('./components/header.php');
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="inner-slide">
-                                                <h2>Городецкая<br>Ирина Ивановна</h2>
-                                                <ul>
-                                                    <li>Отоларинголог (Лор)</li>
-                                                </ul>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique nec arcu sit amet volutpat. Proin fermentum massa a purus sollicitudin, non accumsan justo vehicula. </p>
-                                                <p class="certificates js-certificates">Сертификаты врача</p>
-                                                <div class="certificat-list" style="display: none;">
-                                                    <a class="certificat-item" href="/dist/img/big-certificat.jpg" data-fancyboxCustom>
-                                                        <img src="/dist/img/certificat.jpg" alt="Сертификаты" />
-                                                    </a>
-                                                    <a class="certificat-item" href="/dist/img/big-certificat.jpg" data-fancyboxCustom>
-                                                        <img src="/dist/img/certificat.jpg" alt="Сертификаты" />
-                                                    </a>
-                                                    <a class="certificat-item" href="/dist/img/big-certificat.jpg" data-fancyboxCustom>
-                                                        <img src="/dist/img/certificat.jpg" alt="Сертификаты" />
-                                                    </a>
-                                                </div>
+                                                <h2>Тимофеева <br>Оксана Константиновна	</h2>
+                                                <div class="title-experts">Клиника</div>
+                                                <p>Экстромед</p>
+                                                <div class="title-experts">Специализация</div>
+                                                <p>Оториноларингология</p>
+                                                <div class="title-experts">Образование</div>
+                                                <p>
+                                                    <b>Диплом:</b>Российский государственный медицинский университет Федерального агентства по здравоохранению и социальному  развитию, 2005<br>
+                                                    <b>Ординатура:</b>Отоларингология, Московский областной научно-исследовательский клинический институт им. М.Ф. Владимирского, 2007
+                                                </p>
+                                                <div class="title-experts">Опыт работы</div>
+                                                <p>Общий стаж врачом-оториноларингологом:  14лет. <br>В Экстромед:  с 2017 года</p>
                                             </div>
                                         </div>
                                         <div class="swiper-slide" >
                                             <div class="inner-slide">
-                                                <h2>Городецкая<br>Ирина Ивановна</h2>
+                                                <h2>Шпак <br>Светлана Николаевна</h2>
+                                                <div class="title-experts">Клиника</div>
+                                                <p>ЭкстродентЦентр(Пушкино)</p>
+                                                <div class="title-experts">Специализация</div>
+                                                <p>Стоматология терапевтическая</p>
+                                                <div class="title-experts">Образование</div>
+                                                <p>
+                                                    <b>Диплом:</b>Кемеровский государственный медицинский институт, 1984<br>
+                                                    <b>Интернатура:</b>Стоматологиятерапевтическая, Кемеровский государственный медицинский институт, 1985
+                                                </p>
+                                                <div class="title-experts">Курсы</div>
                                                 <ul>
-                                                    <li>Отоларинголог (Лор)</li>
+                                                    <li>Профилактика пародонтологических заболеваний, Лектор: Терентьева Елена Витальевна</li>
+                                                    <li>Участник Международного симпозиума «Квинтессенция»</li>
+                                                    <li>Реставрация жевательных Зубов. Прямой и полупрямой подход. Лектор: Джейсон Смитсон</li>
+                                                    <li>Лазерная стоматология,  Лектор: Ольга Рисованная</li>
+                                                    <li>Мастер класс по эндодонтии, Лектор: Илья Мер</li>
+                                                    <li>Курс по эстетической реставрации Энамель</li>
+                                                    <li>Шинирование. Фотография в стоматологии. Современные методы устранения дисколоритов зубов, Лектор: Акулович Андрей Викторович</li>
+                                                    <li>Секреты успешной реставрации фронтальная и жевательная группы. Лектор: А. Мартынов</li>
                                                 </ul>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique nec arcu sit amet volutpat. Proin fermentum massa a purus sollicitudin, non accumsan justo vehicula. </p>
-                                                <p class="certificates">Сертификаты врача</p>
+                                                <div class="title-experts">Опыт работы</div>
+                                                <p>Общий стаж врачом-стоматологом: 32 года<br>В Экстродент:  с 2000года</p>
+                                                <p class="certificates js-certificates">Сертификаты врача</p>
+                                                <div class="certificat-list" style="display: none;">
+                                                    <a class="certificat-item" href="/dist/img/shpak/sertif-1.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/shpak/sertif-min-1.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/shpak/sertif-2.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/shpak/sertif-min-2.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/shpak/sertif-3.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/shpak/sertif-min-3.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/shpak/sertif-4.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/shpak/sertif-min-4.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+<!--                                        <div class="swiper-slide">-->
+<!--                                            <div class="inner-slide">-->
+<!--                                                <h2>Городецкая<br>Ирина Ивановна</h2>-->
+<!--                                                <ul>-->
+<!--                                                    <li>Отоларинголог (Лор)</li>-->
+<!--                                                </ul>-->
+<!--                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique nec arcu sit amet volutpat. Proin fermentum massa a purus sollicitudin, non accumsan justo vehicula. </p>-->
+<!--                                                <p class="certificates">Сертификаты врача</p>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                        <div class="swiper-slide">
+                                            <div class="inner-slide">
+                                                <h2>Вантерс <br>Кристина Эдгаровна</h2>
+                                                <div class="title-experts">Клиника</div>
+                                                <p>Экстродент+ (Ивантеевка), Экстродент Центр (Пушкино)</p>
+                                                <div class="title-experts">Специализация</div>
+                                                <p>Ортопедия</p>
+                                                <div class="title-experts">Образование</div>
+                                                <p>
+                                                    <b>Диплом:</b>Смоленская государственная медицинская академия, 2005<br>
+                                                    <b>Ординатура:</b>Стоматология ортопедическая, Смоленская государственная медицинская академия, 2007
+                                                </p>
+                                                <div class="title-experts">Курсы</div>
+                                                <ul>
+                                                    <li>Продвинутый учебно - практический курс по ортопедии, Лектор: Ким Эдуард Вадимович</li>
+                                                    <li>Участник Международного симпозиума имплантологов и ортопедов</li>
+                                                    <li>Курс Клиническойгнатологии</li>
+                                                    <li>Лазерная стоматология, Лектор: Ольга Рисованная</li>
+                                                    <li>Шинирование. Фотография в стоматологии. Современные методы устранения дисколоритов зубов, Лектор: Акулович Андрей Викторович</li>
+                                                    <li>Эстетическая реабилитация: традиции, инновации, Лектор: МауроФридеани</li>
+                                                </ul>
+                                                <div class="title-experts">Опыт работы</div>
+                                                <p>Общий стаж: 11 лет <br>В Экстродент:  с 2010 года</p>
+                                                <p class="certificates js-certificates">Сертификаты врача</p>
+                                                <div class="certificat-list" style="display: none;">
+                                                    <a class="certificat-item" href="/dist/img/vanters/sertif-1.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/vanters/sertif-min-1.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/vanters/sertif-2.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/vanters/sertif-min-2.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/vanters/sertif-3.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/vanters/sertif-min-3.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/vanters/sertif-4.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/vanters/sertif-min-4.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/vanters/sertif-5.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/vanters/sertif-5.JPG" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/vanters/sertif-6.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/vanters/sertif-min-6.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/vanters/sertif-7.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/vanters/sertif-min-7.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="inner-slide">
-                                                <h2>Городецкая<br>Ирина Ивановна</h2>
-                                                <ul>
-                                                    <li>Отоларинголог (Лор)</li>
-                                                </ul>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique nec arcu sit amet volutpat. Proin fermentum massa a purus sollicitudin, non accumsan justo vehicula. </p>
-                                                <p class="certificates">Сертификаты врача</p>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="inner-slide">
-                                                <h2>Городецкая<br>Ирина Ивановна</h2>
-                                                <ul>
-                                                    <li>Отоларинголог (Лор)</li>
-                                                </ul>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique nec arcu sit amet volutpat. Proin fermentum massa a purus sollicitudin, non accumsan justo vehicula. </p>
-                                                <p class="certificates">Сертификаты врача</p>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="inner-slide">
-                                                <h2>Городецкая<br>Ирина Ивановна</h2>
-                                                <ul>
-                                                    <li>Отоларинголог (Лор)</li>
-                                                </ul>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique nec arcu sit amet volutpat. Proin fermentum massa a purus sollicitudin, non accumsan justo vehicula. </p>
-                                                <p class="certificates">Сертификаты врача</p>
+                                                <h2>Филлипова <br>Ия Валентиновна</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -804,13 +865,13 @@ include('./components/header.php');
                                     <a href="#" class="stock-item">
                                         <div class="stock-item__image"><img src="/dist/img/stock-1.jpg" alt="stock"></div>
                                         <div class="stock-item__content">
-                                            <p>Скидка 15 % именинникам осени</p>
+                                            <p>Юным именинникам осени подарок - 15% <br>Детям от 0 до 14</p>
                                         </div>
                                     </a>
                                     <a href="#" class="stock-item">
                                         <div class="stock-item__image"><img src="/dist/img/stock-1.jpg" alt="stock"></div>
                                         <div class="stock-item__content">
-                                            <p>Консультация ЛОР-врача со скидкой 50%</p>
+                                            <p>Скидка 10% для детей на все виды ортодонтических пластинок Консультация врача-ортодонта в подарок</p>
                                         </div>
                                     </a>
                                 </div>
@@ -818,13 +879,13 @@ include('./components/header.php');
                                     <a href="#" class="stock-item">
                                         <div class="stock-item__image"><img src="/dist/img/stock-1.jpg" alt="stock"></div>
                                         <div class="stock-item__content">
-                                            <p>15% на терапевтическое лечение для взрослых</p>
+                                            <p>Консультация ЛОР-врача 1000 500 руб.</p>
                                         </div>
                                     </a>
                                     <a href="#" class="stock-item">
                                         <div class="stock-item__image"><img src="/dist/img/stock-1.jpg" alt="stock"></div>
                                         <div class="stock-item__content">
-                                            <p>Консультация ЛОР-врача со скидкой 50%</p>
+                                            <p>Консультация врача-педиатра 1100 500 руб.</p>
                                         </div>
                                     </a>
                                 </div>

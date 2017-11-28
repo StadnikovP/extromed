@@ -15461,9 +15461,25 @@ var moduleApp = {
             $('.logo svg').attr('viewBox', '0 0 248 44');
         }
     },
+    'ieMenuButton': function(){
+        var GlobalStatePage = 1;
+
+        $('.js-m-btn-menu').on('click', function(e){
+            e.preventDefault();
+
+            var $this = $(this);
+
+            $this.toggleClass('active');
+            $('body').toggleClass('openMenu');
+        });
+
+    },
     'initPlugiScroll': function(){
         if(!$('html').hasClass('ie-js')) {
             moduleApp.pagePilingInit()
+        }
+        else{
+            moduleApp.ieMenuButton();
         }
     },
     'pagePilingInit': function(){
@@ -16194,8 +16210,8 @@ var moduleApp = {
         });
     },
     'mobileMenu': function(){
-        if(window.innerWidth < 941){
-
+        if(window.innerWidth < 941 || $('html').hasClass('ie-js')){
+            console.log('mob click');
             var hash = window.location.hash,
                 page_index = 0;
 
@@ -16204,6 +16220,10 @@ var moduleApp = {
                     if(hash == $(elt).find('a').attr('href')){
                         page_index = $(elt).find('a').attr('data-index');
                         return;
+                    }
+                    else {
+                        page_index = 1;
+                        hash = '';
                     }
                 });
 

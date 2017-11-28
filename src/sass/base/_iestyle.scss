@@ -43,4 +43,18 @@
     display: none;
   }
 
+  .window-main__content{
+    .link-down{
+      display: none;
+    }
+  }
+
+  .openMenu{
+    .container-menu{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+
 }
