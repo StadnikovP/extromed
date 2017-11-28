@@ -81,7 +81,6 @@ var pageApp = {
         }());
     },
     'determineIE': function(){
-        
         // function getInternetExplorerVersion(){
         //     var rv = -1;
         //     if (navigator.appName == 'Microsoft Internet Explorer')

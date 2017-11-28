@@ -49,6 +49,7 @@
 
             if(getInternetExplorerVersion()!==-1){
                 document.getElementById("html").classList.add("ie-js", "ie-stile");
+                document.getElementById("body").classList.add("disabled-onepage-scroll")
 //                $('html').addClass('ie-js ie-stile');
             }
 //            document.getElementById("html").classList.add("ie-js", "ie-stile");
@@ -79,7 +80,7 @@
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     </head>
 
-    <body class="page-<?=$page?>" data-page="<?=$page?>">
+    <body id="body" class="page-<?=$page?>" data-page="<?=$page?>">
         <div class="site-body">
             <div class="wrapper-header">
                 <div class="wrapper ">

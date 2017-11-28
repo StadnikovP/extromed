@@ -12555,7 +12555,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       }
     });
 
-    if(!$('html').hasClass('ie-js')) {
+    // if(!$('html').hasClass('ie-js')) {
         el.swipeEvents().bind("swipeDown", function (event) {
             if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
             el.moveUp();
@@ -12563,7 +12563,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
             if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
             el.moveDown();
         });
-    }
+    // }
 
     // Create Pagination and Display Them
     if (settings.pagination == true) {
@@ -12629,13 +12629,13 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 
     $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll wheel', function(event) {
       console.log('scroll');
-      if(!$('html').hasClass('ie-js')) {
+      // if(!$('html').hasClass('ie-js')) {
         console.log('scroll2');
         event.preventDefault();
         // console.log('wheelDelta= ' + event.originalEvent.deltaY + ' detail= ' + event.originalEvent.detail);
         var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
         if (!$("body").hasClass("disabled-onepage-scroll")) init_scroll(event, delta);
-      }
+      // }
     });
 
 
@@ -15233,7 +15233,6 @@ var pageApp = {
         }());
     },
     'determineIE': function(){
-        
         // function getInternetExplorerVersion(){
         //     var rv = -1;
         //     if (navigator.appName == 'Microsoft Internet Explorer')
