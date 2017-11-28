@@ -376,13 +376,15 @@
       }
     });
 
-    el.swipeEvents().bind("swipeDown",  function(event){
-      if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
-      el.moveUp();
-    }).bind("swipeUp", function(event){
-      if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
-      el.moveDown();
-    });
+    if(!$('html').hasClass('ie-js')) {
+        el.swipeEvents().bind("swipeDown", function (event) {
+            if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+            el.moveUp();
+        }).bind("swipeUp", function (event) {
+            if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+            el.moveDown();
+        });
+    }
 
     // Create Pagination and Display Them
     if (settings.pagination == true) {
