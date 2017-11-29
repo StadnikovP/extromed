@@ -1,5 +1,5 @@
 var $window, $document, $html;
-
+var expertsSwiper, expertsContentSwiper, configSliderExperts, configSliderExpertsContent;
 
 var pageApp = {
     'init': function(){
@@ -123,8 +123,10 @@ var moduleApp = {
         this.formValidation();
         this.mobileMenu();
         this.initPlugiScroll();
+        this.sliderExperts();
     },
     'globalActions':function(){
+
         //tabs
         $('.js-tabs-controls').on('click', function(e){
             e.preventDefault();
@@ -214,7 +216,6 @@ var moduleApp = {
             });
         });
 
-
         //hover element price
         $('.js-item-element').hover(function () {
             var $this = $(this),
@@ -225,18 +226,58 @@ var moduleApp = {
             $this.toggleClass('disabled').toggleClass('active');
 
         });
+    },
+    'sliderExperts':function(update){
+        var expertsSwiper, expertsContentSwiper, configSliderExperts, configSliderExpertsContent;
 
+        configSliderExperts = {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            centeredSlides: true,
+            navigation: {
+                nextEl: '.js-next-experts',
+                prevEl: '.js-prev-experts',
+            },
+            simulateTouch: false,
+            allowTouchMove: false
+        };
+
+        configSliderExpertsContent = {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            centeredSlides: true,
+            simulateTouch: false,
+            autoHeight: true,
+            observer: true,
+            navigation: {
+                nextEl: '.js-next-experts',
+                prevEl: '.js-prev-experts',
+            },
+            allowTouchMove: false,
+            on:{
+                slideChange: function(swiper){
+                    // upDateSize();
+                }
+            }
+
+        };
+
+        expertsSwiper = new Swiper('.js-slider-experts', configSliderExperts);
+        expertsContentSwiper = new Swiper('.js-slider-experts-content', configSliderExpertsContent);
+
+        function upDateSize(){
+            expertsContentSwiper.update();
+        }
 
         $('.js-certificates').on('click', function(){
-            var updateSize = true;
             var $this = $(this),
-               thisSertificat = $this.parent('div').find('.certificat-list').slideToggle(300);
+                thisSertificat = $this.parent('div').find('.certificat-list').slideToggle(300);
 
             $this.toggleClass('active');
 
             setTimeout(function(){
-                moduleApp.initSlider(updateSize);
-            }, 400);
+                upDateSize();
+            }, 500);
         });
 
         var $sertificates = $("[data-fancyboxCustom]");
@@ -246,23 +287,22 @@ var moduleApp = {
                 tempalte = '<div class="custom-popUp-image"><img src="' + $this.attr('href') +'"></div>';
 
             e.preventDefault();
-                $.fancybox.open({
-                    type: 'html',
-                    content: tempalte,
-                    padding: 0,
-                    autoScale: false,
-                    fitToView: false,
-                    openEffect  : 'drop',
-                    closeEffect: 'drop',
-                    nextEffect: 'fade',
-                    prevEffect : 'fade',
-                    openSpeed: 300,
-                    closeSpeed: 300,
-                    nextSpeed: 300,
-                    prevSpeed: 300
+            $.fancybox.open({
+                type: 'html',
+                content: tempalte,
+                padding: 0,
+                autoScale: false,
+                fitToView: false,
+                openEffect  : 'drop',
+                closeEffect: 'drop',
+                nextEffect: 'fade',
+                prevEffect : 'fade',
+                openSpeed: 300,
+                closeSpeed: 300,
+                nextSpeed: 300,
+                prevSpeed: 300
             });
         });
-
 
 
     },
@@ -747,43 +787,6 @@ var moduleApp = {
         function animationProgreeBar(){
             $('.js-slider-choice .js-progress').addClass('animation-progress');
         }
-
-
-
-        var configSliderExperts = {
-            slidesPerView: 1,
-            spaceBetween: 0,
-            centeredSlides: true,
-            navigation: {
-                nextEl: '.js-next-experts',
-                prevEl: '.js-prev-experts',
-            },
-            simulateTouch: false,
-            allowTouchMove: false
-        };
-
-        var configSliderExpertsContent = {
-            slidesPerView: 1,
-            spaceBetween: 0,
-            centeredSlides: true,
-            simulateTouch: false,
-            autoHeight: true,
-            observer: true,
-            navigation: {
-                nextEl: '.js-next-experts',
-                prevEl: '.js-prev-experts',
-            },
-            allowTouchMove: false
-        };
-
-
-        var expertsSwiper = new Swiper('.js-slider-experts', configSliderExperts);
-        var expertsContentSwiper = new Swiper('.js-slider-experts-content', configSliderExpertsContent);
-
-        if(update){
-            expertsContentSwiper.updateSize();
-        }
-
 
         // var configSliderReviews = {
         //     slidesPerView: 1,

@@ -137,7 +137,6 @@
     }
 
     $.fn.moveDown = function() {
-        console.log('moveDown');
       var el = $(this)
       index = $(settings.sectionContainer +".active").data("index");
       current = $(settings.sectionContainer + "[data-index='" + index + "']");
@@ -174,7 +173,6 @@
     }
 
     $.fn.moveUp = function() {
-        console.log('moveUp');
       var el = $(this)
       index = $(settings.sectionContainer +".active").data("index");
       current = $(settings.sectionContainer + "[data-index='" + index + "']");
@@ -292,7 +290,6 @@
     }
 
     function responsive() {
-      console.log('responsive');
       //start modification
       var valForTest = false;
       var typeOfRF = typeof settings.responsiveFallback
@@ -301,7 +298,6 @@
         valForTest = $(window).width() < settings.responsiveFallback;
       }
       if(typeOfRF == "boolean"){
-        console.log('typeOfRF'+settings.responsiveFallback);
         valForTest = settings.responsiveFallback;
       }
       if(typeOfRF == "function"){
@@ -357,8 +353,6 @@
             event.preventDefault();
             return;
         }
-
-        // console.log('deltaOfInterest= '+deltaOfInterest);
 
         if (deltaOfInterest < 0) {
           el.moveDown()
@@ -454,14 +448,9 @@
     startUrl();
 
     $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll wheel', function(event) {
-      console.log('scroll');
-      // if(!$('html').hasClass('ie-js')) {
-        console.log('scroll2');
-        event.preventDefault();
-        // console.log('wheelDelta= ' + event.originalEvent.deltaY + ' detail= ' + event.originalEvent.detail);
-        var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
-        if (!$("body").hasClass("disabled-onepage-scroll")) init_scroll(event, delta);
-      // }
+      event.preventDefault();
+      var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
+      if (!$("body").hasClass("disabled-onepage-scroll")) init_scroll(event, delta);
     });
 
     if($('html').hasClass('ie-js')) {
@@ -517,10 +506,4 @@
     return false;
   }
 
-    // if($('html').hasClass('ie-js')){
-    //     settings.responsiveFallback
-    //     console.log('unbind');
-    //     $(document).unbind('mousewheel DOMMouseScroll MozMousePixelScroll');
-    //     el.swipeEvents().unbind("swipeDown swipeUp");
-    // }
 }(window.jQuery);

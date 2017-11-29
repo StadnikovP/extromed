@@ -12316,7 +12316,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     }
 
     $.fn.moveDown = function() {
-        console.log('moveDown');
       var el = $(this)
       index = $(settings.sectionContainer +".active").data("index");
       current = $(settings.sectionContainer + "[data-index='" + index + "']");
@@ -12353,7 +12352,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     }
 
     $.fn.moveUp = function() {
-        console.log('moveUp');
       var el = $(this)
       index = $(settings.sectionContainer +".active").data("index");
       current = $(settings.sectionContainer + "[data-index='" + index + "']");
@@ -12471,7 +12469,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     }
 
     function responsive() {
-      console.log('responsive');
       //start modification
       var valForTest = false;
       var typeOfRF = typeof settings.responsiveFallback
@@ -12480,7 +12477,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         valForTest = $(window).width() < settings.responsiveFallback;
       }
       if(typeOfRF == "boolean"){
-        console.log('typeOfRF'+settings.responsiveFallback);
         valForTest = settings.responsiveFallback;
       }
       if(typeOfRF == "function"){
@@ -12536,8 +12532,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
             event.preventDefault();
             return;
         }
-
-        // console.log('deltaOfInterest= '+deltaOfInterest);
 
         if (deltaOfInterest < 0) {
           el.moveDown()
@@ -12633,14 +12627,9 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     startUrl();
 
     $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll wheel', function(event) {
-      console.log('scroll');
-      // if(!$('html').hasClass('ie-js')) {
-        console.log('scroll2');
-        event.preventDefault();
-        // console.log('wheelDelta= ' + event.originalEvent.deltaY + ' detail= ' + event.originalEvent.detail);
-        var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
-        if (!$("body").hasClass("disabled-onepage-scroll")) init_scroll(event, delta);
-      // }
+      event.preventDefault();
+      var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
+      if (!$("body").hasClass("disabled-onepage-scroll")) init_scroll(event, delta);
     });
 
     if($('html').hasClass('ie-js')) {
@@ -12696,12 +12685,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     return false;
   }
 
-    // if($('html').hasClass('ie-js')){
-    //     settings.responsiveFallback
-    //     console.log('unbind');
-    //     $(document).unbind('mousewheel DOMMouseScroll MozMousePixelScroll');
-    //     el.swipeEvents().unbind("swipeDown swipeUp");
-    // }
 }(window.jQuery);
 /*
 	Masked Input plugin for jQuery
@@ -15169,7 +15152,7 @@ and dependencies (minified).
 
     }))}));
 var $window, $document, $html;
-
+var expertsSwiper, expertsContentSwiper, configSliderExperts, configSliderExpertsContent;
 
 var pageApp = {
     'init': function(){
@@ -15293,8 +15276,10 @@ var moduleApp = {
         this.formValidation();
         this.mobileMenu();
         this.initPlugiScroll();
+        this.sliderExperts();
     },
     'globalActions':function(){
+
         //tabs
         $('.js-tabs-controls').on('click', function(e){
             e.preventDefault();
@@ -15384,7 +15369,6 @@ var moduleApp = {
             });
         });
 
-
         //hover element price
         $('.js-item-element').hover(function () {
             var $this = $(this),
@@ -15395,18 +15379,58 @@ var moduleApp = {
             $this.toggleClass('disabled').toggleClass('active');
 
         });
+    },
+    'sliderExperts':function(update){
+        var expertsSwiper, expertsContentSwiper, configSliderExperts, configSliderExpertsContent;
 
+        configSliderExperts = {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            centeredSlides: true,
+            navigation: {
+                nextEl: '.js-next-experts',
+                prevEl: '.js-prev-experts',
+            },
+            simulateTouch: false,
+            allowTouchMove: false
+        };
+
+        configSliderExpertsContent = {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            centeredSlides: true,
+            simulateTouch: false,
+            autoHeight: true,
+            observer: true,
+            navigation: {
+                nextEl: '.js-next-experts',
+                prevEl: '.js-prev-experts',
+            },
+            allowTouchMove: false,
+            on:{
+                slideChange: function(swiper){
+                    // upDateSize();
+                }
+            }
+
+        };
+
+        expertsSwiper = new Swiper('.js-slider-experts', configSliderExperts);
+        expertsContentSwiper = new Swiper('.js-slider-experts-content', configSliderExpertsContent);
+
+        function upDateSize(){
+            expertsContentSwiper.update();
+        }
 
         $('.js-certificates').on('click', function(){
-            var updateSize = true;
             var $this = $(this),
-               thisSertificat = $this.parent('div').find('.certificat-list').slideToggle(300);
+                thisSertificat = $this.parent('div').find('.certificat-list').slideToggle(300);
 
             $this.toggleClass('active');
 
             setTimeout(function(){
-                moduleApp.initSlider(updateSize);
-            }, 400);
+                upDateSize();
+            }, 500);
         });
 
         var $sertificates = $("[data-fancyboxCustom]");
@@ -15416,23 +15440,22 @@ var moduleApp = {
                 tempalte = '<div class="custom-popUp-image"><img src="' + $this.attr('href') +'"></div>';
 
             e.preventDefault();
-                $.fancybox.open({
-                    type: 'html',
-                    content: tempalte,
-                    padding: 0,
-                    autoScale: false,
-                    fitToView: false,
-                    openEffect  : 'drop',
-                    closeEffect: 'drop',
-                    nextEffect: 'fade',
-                    prevEffect : 'fade',
-                    openSpeed: 300,
-                    closeSpeed: 300,
-                    nextSpeed: 300,
-                    prevSpeed: 300
+            $.fancybox.open({
+                type: 'html',
+                content: tempalte,
+                padding: 0,
+                autoScale: false,
+                fitToView: false,
+                openEffect  : 'drop',
+                closeEffect: 'drop',
+                nextEffect: 'fade',
+                prevEffect : 'fade',
+                openSpeed: 300,
+                closeSpeed: 300,
+                nextSpeed: 300,
+                prevSpeed: 300
             });
         });
-
 
 
     },
@@ -15917,43 +15940,6 @@ var moduleApp = {
         function animationProgreeBar(){
             $('.js-slider-choice .js-progress').addClass('animation-progress');
         }
-
-
-
-        var configSliderExperts = {
-            slidesPerView: 1,
-            spaceBetween: 0,
-            centeredSlides: true,
-            navigation: {
-                nextEl: '.js-next-experts',
-                prevEl: '.js-prev-experts',
-            },
-            simulateTouch: false,
-            allowTouchMove: false
-        };
-
-        var configSliderExpertsContent = {
-            slidesPerView: 1,
-            spaceBetween: 0,
-            centeredSlides: true,
-            simulateTouch: false,
-            autoHeight: true,
-            observer: true,
-            navigation: {
-                nextEl: '.js-next-experts',
-                prevEl: '.js-prev-experts',
-            },
-            allowTouchMove: false
-        };
-
-
-        var expertsSwiper = new Swiper('.js-slider-experts', configSliderExperts);
-        var expertsContentSwiper = new Swiper('.js-slider-experts-content', configSliderExpertsContent);
-
-        if(update){
-            expertsContentSwiper.updateSize();
-        }
-
 
         // var configSliderReviews = {
         //     slidesPerView: 1,

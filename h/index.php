@@ -510,26 +510,46 @@ include('./components/header.php');
                                         <div class="js-tabs-item tabs-item active">
                                             <div class="content-tab">
                                                 <div class="accordion-list">
+
                                                     <div class="accordion-item">
-                                                        <a class="accordion-trigger style" href="#"><span></span>Прием педиатра ведется по предварительной записи, что исключает ожидание и экономит время родителей</a>
+                                                        <a class="accordion-trigger js-accordion-trigger style" href="#"><span></span>Ведение детей первого года жизни до 18 лет</a>
+                                                        <div class="accordion-inner">
+                                                            <div class="accordion-inner-item">
+                                                                <ul>
+                                                                    <li>грудное вскармливание (правильное прикладывание к груди, питание и гигиена матери)</li>
+                                                                    <li>введение прикормов, смешанное и искусственное вскармливание</li>
+                                                                    <li>диспансеризация детей из групп риска</li>
+                                                                    <li>индивидуальный подход к вакцинации детей, вакцинация на дому</li>
+                                                                    <li>естественное родительство</li>
+                                                                    <li>Pekip развитие</li>
+                                                                    <li>гармонизация физического и нервно-психического развития детей</li>
+                                                                    <li>подготовка к детским дошкольным и школьным учреждениям (психологическая, медицинская и т.д.)</li>
+                                                                    <li>лечение острой патологии амбулаторно и на дому</li>
+                                                                    <li>профилактика рецидивов хронических заболеваний, их своевременная диагностика и лечение</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <a class="accordion-trigger style" href="#"><span></span>Диагностики и лечение заболевания, оценки состояния больного и клинической ситуации в соответствии со стандартом медицинской помощи</a>
                                                         <div class="accordion-inner">
                                                             <div class="accordion-inner-item"></div>
                                                         </div>
                                                     </div>
                                                     <div class="accordion-item">
-                                                        <a class="accordion-trigger style" href="#"><span></span>В клинике оборудована игровая комната, где ребенок может интересно провести время до приема и после.</a>
+                                                        <a class="accordion-trigger style" href="#"><span></span>Оформление всей текущей документации, карт школьника, эпикризов, справок и т.д.</a>
                                                         <div class="accordion-inner">
                                                             <div class="accordion-inner-item"></div>
                                                         </div>
                                                     </div>
                                                     <div class="accordion-item">
-                                                        <a class="accordion-trigger style" href="#"><span></span>Для самых маленьких пациентов выделены отдельные часы приема для плановых осмотров, что исключает контакта с болеющими детьми.</a>
+                                                        <a class="accordion-trigger style" href="#"><span></span>Обслуживание вызовов на дому, экспертиза временной нетрудоспособности, назначение лечения и контроль за динамикой состояния</a>
                                                         <div class="accordion-inner">
                                                             <div class="accordion-inner-item"></div>
                                                         </div>
                                                     </div>
                                                     <div class="accordion-item">
-                                                        <a class="accordion-trigger style" href="#"><span></span>Мы осуществляем выезд на дом, если посещение ребенком  врача в клинике невозможно</a>
+                                                        <a class="accordion-trigger style" href="#"><span></span>Грудничковый массаж и гимнастика, обучение родителей</a>
                                                         <div class="accordion-inner">
                                                             <div class="accordion-inner-item"></div>
                                                         </div>
@@ -673,6 +693,15 @@ include('./components/header.php');
                                                 </ul>
                                                 <div class="title-experts">Опыт работы</div>
                                                 <p>Общий стаж врачом-стоматологом: 32 года<br>В Экстродент:  с 2000года</p>
+                                                <div class="title-experts">Награды</div>
+                                                <ul>
+                                                    <li>Благодарственным письмом главы Пушкинского муниципального района за большой вклад в улучшение медицинского обслуживания населения Пушкинского муниципального района.</li>
+                                                    <li>Почетной грамотой Московской областной думы за многолетний добросовестный труд, большой вклад в улучшение медицинского обслуживания населения Московской  области и в связи с 55-летием со дня рождения.</li>
+                                                    <li>Благодарственным письмом Губернатора Московской области за многолетний добросовестный тру, высокие достижения в деле медицинского обслуживания населения Московской области и в связи с 90-летием города Пушкино.</li>
+                                                    <li>Медалью «Отличник стоматологии» по Постановлению совета Стоматологической Ассоциации России от 29.09.2015 г.</li>
+                                                    <li>Грамотой Мин Здравоохр "Почетная грамота за заслуги в обл Здравоохранения, многолетний добросовестный труд</li>
+                                                    <li>Орденом СтАР «За заслуги перед стоматологией» II степени  по Постановлению Совета СтАР от 26.09.2017</li>
+                                                </ul>
                                                 <p class="certificates js-certificates">Сертификаты врача</p>
                                                 <div class="certificat-list" style="display: none;">
                                                     <a class="certificat-item" href="/dist/img/shpak/sertif-1.JPG" data-fancyboxCustom>
@@ -690,16 +719,6 @@ include('./components/header.php');
                                                 </div>
                                             </div>
                                         </div>
-<!--                                        <div class="swiper-slide">-->
-<!--                                            <div class="inner-slide">-->
-<!--                                                <h2>Городецкая<br>Ирина Ивановна</h2>-->
-<!--                                                <ul>-->
-<!--                                                    <li>Отоларинголог (Лор)</li>-->
-<!--                                                </ul>-->
-<!--                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique nec arcu sit amet volutpat. Proin fermentum massa a purus sollicitudin, non accumsan justo vehicula. </p>-->
-<!--                                                <p class="certificates">Сертификаты врача</p>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
                                         <div class="swiper-slide">
                                             <div class="inner-slide">
                                                 <h2>Вантерс <br>Кристина Эдгаровна</h2>
@@ -723,6 +742,11 @@ include('./components/header.php');
                                                 </ul>
                                                 <div class="title-experts">Опыт работы</div>
                                                 <p>Общий стаж: 11 лет <br>В Экстродент:  с 2010 года</p>
+                                                <div class="title-experts">Награды</div>
+                                                <ul>
+                                                    <li>Медаль за верность клятве Гиппократа</li>
+                                                    <li>медалью «Отличник стоматологии» по постановлению СтАР  от 27.09.2016</li>
+                                                </ul>
                                                 <p class="certificates js-certificates">Сертификаты врача</p>
                                                 <div class="certificat-list" style="display: none;">
                                                     <a class="certificat-item" href="/dist/img/vanters/sertif-1.JPG" data-fancyboxCustom>
@@ -752,6 +776,24 @@ include('./components/header.php');
                                         <div class="swiper-slide">
                                             <div class="inner-slide">
                                                 <h2>Филлипова <br>Ия Валентиновна</h2>
+                                                <p class="certificates js-certificates">Сертификаты врача</p>
+                                                <div class="certificat-list" style="display: none;">
+                                                    <a class="certificat-item" href="/dist/img/filipova/sertif-1.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/filipova/sertif-min-1.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/filipova/sertif-2.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/filipova/sertif-min-2.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/filipova/sertif-3.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/filipova/sertif-min-3.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/filipova/sertif-4.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/filipova/sertif-min-4.jpg" alt="Сертификаты" />
+                                                    </a>
+                                                    <a class="certificat-item" href="/dist/img/filipova/sertif-5.JPG" data-fancyboxCustom>
+                                                        <img src="/dist/img/filipova/sertif-5.JPG" alt="Сертификаты" />
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -682,6 +682,12 @@
     ul, p{
       width: 80%;
     }
+
+    .accordion-inner-item{
+      ul{
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -911,7 +917,7 @@
       content: '';
       position: absolute;
       left: 0;
-      top: 50%;
+      top: 1rem;
       width: 15px;
       height: 1px;
       background: #454545;

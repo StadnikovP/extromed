@@ -3930,6 +3930,9 @@ body {
 .window-direction .window-direction__content-wrapper ul, .window-direction .window-direction__content-wrapper p {
   width: 80%; }
 
+.window-direction .window-direction__content-wrapper .accordion-inner-item ul {
+  width: 100%; }
+
 .window-direction__image {
   position: relative; }
   .window-direction__image:before {
@@ -4116,7 +4119,7 @@ body {
       content: '';
       position: absolute;
       left: 0;
-      top: 50%;
+      top: 1rem;
       width: 15px;
       height: 1px;
       background: #454545; }
