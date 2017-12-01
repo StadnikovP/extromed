@@ -20,7 +20,7 @@ include('./components/header.php');
                             <div class="window-main__content-wrapper">
                                 <div class="mCustomScrollbar" data-mcs-theme="minimal-dark">
                                     <h1>Лор и стоматология <br>для детей <br>и взрослых <br>в Пушкино</h1>
-                                    <p>Экстромед- новая клиника сети стоматологии Экстродент. Клиника воплотила в себе наколенный  20 летний опыт в области стоматологии для детей и взрослых, а также включает в себя новые направления:</p>
+                                    <p>Экстромед- новая клиника сети стоматологий Экстродент. Клиника воплотила в себе наколенный  20 летний опыт в области стоматологии для детей и взрослых, а также включает в себя новые направления:</p>
                                     <ul class="custom-list">
                                         <li>Отоларинголог (Лор)</li>
                                         <li>Лечение зубов под седацией и  наркозом</li>
@@ -958,7 +958,7 @@ include('./components/header.php');
                                 <div class="address">улица Чехова, дом 1, корпус 3</div>
                                 <a class="phone" href="tel:84955404001">+7 (495) 540-40-01</a>
                             </div>
-                            <a href="#" class="route-button">Проложить маршрут</a>
+                            <a href="https://www.google.ru/maps/dir/" target="_blank" class="route-button">Проложить маршрут</a>
                         </div>
                     </div>
                     <div class="container__right">
